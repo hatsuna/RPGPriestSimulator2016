@@ -21,6 +21,6 @@ public class InteractionTriggers : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider collider){
 		Debug.Log(collider.name + " collided with " + name);
-		gameManager.ProcessTriggers(gameObject, collider.gameObject);
+		//gameManager.ProcessTriggers(gameObject, collider.gameObject);
 	}
 }

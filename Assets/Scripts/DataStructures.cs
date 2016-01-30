@@ -6,6 +6,7 @@ public class DataStructures : MonoBehaviour {
 
 	public static List<Affliction> possibleAfflictions;
 	public static List<ToolType> possibleToolTypes;
+	public static List<Dialogue> possibleDialogueChoices;
 
 	public class Affliction {
 
@@ -27,11 +28,44 @@ public class DataStructures : MonoBehaviour {
 		public string name;
 		public Dictionary<int, Affliction> treatmentDict;
 
-		public ToolType(string _name, Dictionary<int, Affliction> _treatmentDict) {
+			public ToolType(string _name, Dictionary<int, Affliction> _treatmentDict) {
 			this.name = _name;
-			this.treatmentDict = _treatmentDict;
+			this. treatmentDict = _treatmentDict;
 			possibleToolTypes.Add(this);
 		}
+	}
+
+	public class Dialogue {
+		public string text;
+		// 1= player 2= friend 3= victim
+		public int spokenBy;
+		// 1= bad 2= neutral 3= good
+		public int goodness;
+		public List<Affliction> relevantAfflictions;
+
+		public Dialogue( string _text, int _spokenBy, int _goodness, List<Affliction> _relevantAfflictions){
+			this.text = _text;
+			this.spokenBy = _spokenBy;
+			this.goodness = _goodness;
+			this.relevantAfflictions = _relevantAfflictions;
+			possibleDialogueChoices.Add(this);
+		}
+	}
+
+	// Returns random dialogue choice with selected goodness and affliction
+	Dialogue getDialogue (int goodness, Affliction affliction ) {
+		// build list of dialogue choice with selected goodness and relevant affliction
+		List<Dialogue> dialogueChoices = new List<Dialogue>();
+		for (int i = 0; i < possibleDialogueChoices.Count; i++) {
+			if (
+					possibleDialogueChoices [i].goodness == goodness 
+					&& possibleDialogueChoices [i].relevantAfflictions.Contains (affliction)) {
+				dialogueChoices.Add (possibleDialogueChoices[i]);
+			};
+		};
+		int randomNum = Random.Range (0, dialogueChoices.Count);
+		Dialogue dialogueChoice = dialogueChoices [randomNum];
+		return dialogueChoice;
 	}
 
 	void Start() {
@@ -44,48 +78,53 @@ public class DataStructures : MonoBehaviour {
 		Affliction parasite = new Affliction ("Parasite", 4);
 		Affliction zombified = new Affliction ("Zombified", 4);
 
-		//Debug.Log ("Possible Afflictions: ");
-		//for (int i=0; i<possibleAfflictions.Count-1; i++){
-		//	Debug.Log(possibleAfflictions[i].name);
-		//}
+		/*Debug.Log ("Possible Afflictions: ");
+		for (int i=0; i<possibleAfflictions.Count-1; i++){
+			Debug.Log(possibleAfflictions[i].name);
+		}*/
 
 		// Tools
 		possibleToolTypes = new List<ToolType> ();
 
 		ToolType candle = new ToolType ("Candle", new Dictionary<int, Affliction>(){
-			{2, possessed},
-			{1, frozen}
+			{ 32, possessed },
+			{ 21, frozen }
 		});
 
 		ToolType magic = new ToolType ("Magic", new Dictionary<int, Affliction> () {
-			{ 1, possessed },
-			{ 3, zombified },
-			{ 1, parasite }
+			{ 31, possessed },
+			{ 53, zombified },
+			{ 41, parasite }
 		});
 
 		ToolType potion = new ToolType ("Potion", new Dictionary<int, Affliction> () {
-			{ 2, missingLimb },
-			{ 2, frozen },
-			{ 3, parasite }
+			{ 12, missingLimb },
+			{ 22, frozen },
+			{ 43, parasite }
 		});
 			
 		ToolType crowbar = new ToolType ("Crowbar", new Dictionary<int, Affliction> () {
-			{ 2, parasite }
+			{ 42, parasite }
 		});
 
 		ToolType initialRelease = new ToolType ("Initial Release", new Dictionary<int, Affliction> () {
-			{ 0, possessed },
-			{ 0, frozen },
-			{ 0, parasite },
-			{ 0, frozen },
-			{ 0, missingLimb },
-			{ 0, zombified }
+			{ 30, possessed },
+			{ 20, frozen },
+			{ 40, parasite },
+			{ 10, missingLimb },
+			{ 50, zombified }
 		});
 			
-
-		Debug.Log ("Possible Afflictions: ");
+		/*Debug.Log ("Possible Tools: ");
 		for (int i=0; i<possibleToolTypes.Count; i++){
 			Debug.Log(possibleToolTypes[i].name);
-		}
+		}*/
+
+		Debug.Log (gameObject);
+		gameObject.GetComponent<GameManager> ().GenerateTools ();
+
+		//Dialogue
+		possibleDialogueChoices = new List<Dialogue>();
+
 	}
 }
