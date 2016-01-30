@@ -9,10 +9,6 @@ public class Victim : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		// Choose a random sprite and set sprite renderer to use it (for test purposes, one sprite)
-		public Sprite testSprite;
-		gameObject.GetComponent<SpriteRenderer>().sprite=testSprite;
-
 		// Apply a random condition to victim
 		this.affliction = GenerateAfflictions();
 		ApplyAffliction (affliction);
