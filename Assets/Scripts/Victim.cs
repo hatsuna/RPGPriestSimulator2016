@@ -17,7 +17,7 @@ public class Victim : MonoBehaviour {
 		// Apply a random condition to victim
 		this.affliction = GenerateAfflictions();
 		ApplyAffliction (affliction);
-		Debug.Log("I'm afflicted with: " + affliction.name);
+		//Debug.Log("I'm afflicted with: " + affliction.name);
 	}
 	
 	// Update is called once per frame

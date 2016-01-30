@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
 	public Transform toolLocation;
 	public static List<GameObject> tools = new List<GameObject>();
 
+	public int toolDistance;
+
 	GameObject heldObject;
 
 	public Text textUI;
@@ -25,11 +27,9 @@ public class GameManager : MonoBehaviour {
 		// This will automatically set up an affliction
 		Instantiate(victimPrefab, victimLocation.transform.position, victimLocation.transform.rotation); 
 
-		GenerateTools();
-
 		//make sure there is a valid adventurer on the altar
 		if (adventurer.tag == "Adventurer"){
-			Debug.Log("You have an adventurer on the altar");
+			//Debug.Log("You have an adventurer on the altar");
 			//if (adventurer.
 			foreach (Transform child in adventurer.transform){
 				if(child.tag == "InteractionPlane"){
@@ -47,14 +47,20 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void GenerateTools(){
+		// Clear existing list of tools
+		for (int i = 0; i < tools.Count; i++) {
+			Destroy (tools [i]);
+		}
+
+
 		List<DataStructures.ToolType> possibleToolTypes = DataStructures.possibleToolTypes;
-		for(int i = 0; i < possibleToolTypes.Count - 1; i++){
-			Debug.Log(possibleToolTypes[i].name);
+		Debug.Log (possibleToolTypes);
+		for(int i = 0; i < possibleToolTypes.Count; i++){
 
-
-			/*GameObject newTool = (GameObject)(Instantiate(toolPrefab, new Vector3(toolLocation.position.x + i, toolLocation.position.y, toolLocation.position.z), toolLocation.rotation));
+			int distance = i * toolDistance;
+			GameObject newTool = (GameObject)(Instantiate(toolPrefab, new Vector3(toolLocation.position.x + distance, toolLocation.position.y, toolLocation.position.z), toolLocation.rotation));
 			tools.Add (newTool);
-			tools[i].GetComponent<Tool>().tooltype = possibleToolTypes[i];*/
+			tools[i].GetComponent<Tool>().tooltype = possibleToolTypes[i];
 		}
 
 	}
