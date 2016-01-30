@@ -17,9 +17,6 @@ public class Victim : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// Every time a tool collides with the victim check if
-		// treatmentDict for that tool with treatmentState = affliction
-		// if so, we can treat
 	
 	}
 
