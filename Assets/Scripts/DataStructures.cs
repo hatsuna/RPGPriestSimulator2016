@@ -13,6 +13,7 @@ public class DataStructures : MonoBehaviour {
 	public GameObject magicObject;
 	public GameObject crowbarObject;
 	public GameObject potionObject;
+	public GameObject holySymbolObject;
 
 	public class Affliction {
 
@@ -127,6 +128,12 @@ public class DataStructures : MonoBehaviour {
 		ToolType crowbar = new ToolType ("Crowbar", crowbarObject, new Dictionary<int, Affliction> () {
 			{ 42, parasite }
 		});
+
+		ToolType holySymbol = new ToolType ("Holy Symbol", holySymbolObject, new Dictionary<int, Affliction> () {
+			{23, possessed},
+			{51, possessed}
+		});
+			
 
 		ToolType initialRelease = new ToolType ("Initial Release", initialReleaseObject, new Dictionary<int, Affliction> () {
 			{ 30, possessed },
