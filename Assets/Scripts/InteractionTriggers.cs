@@ -15,8 +15,6 @@ public class InteractionTriggers : MonoBehaviour {
 		
 	}
 	
-	//COLLISIONS ARE BROKEN BECAUSE YOU HAVENT ADDED RIGIDBODIES YET DUMBASS
-	
 	
 	//interactable objects lose their collider while the mouse is holding them
 	//they regain their collider when the mouse lets go of them
