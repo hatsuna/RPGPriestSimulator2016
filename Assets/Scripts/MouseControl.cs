@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using UnityEngine;
 using System.Collections;
 
@@ -20,8 +19,10 @@ public class MouseControl : MonoBehaviour {
 	void Update () {
 
 		if(Input.GetMouseButton(1)){
-
-		}else{
+			float mouseY = -Input.GetAxis("Mouse Y");
+			Camera.main.transform.Rotate(mouseY, 0f, 0f);
+		}
+		else{
 			Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
 			// generate a "RaycastHit" to remember where the raycast hit
 			RaycastHit rayHit = new RaycastHit();
@@ -54,5 +55,6 @@ public class MouseControl : MonoBehaviour {
 				}
 
 			}
+		}
 	}
 }
