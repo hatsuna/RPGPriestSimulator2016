@@ -8,6 +8,12 @@ public class DataStructures : MonoBehaviour {
 	public static List<ToolType> possibleToolTypes;
 	public static List<Dialogue> possibleDialogueChoices;
 
+	public GameObject candleObject;
+	public GameObject initialReleaseObject;
+	public GameObject magicObject;
+	public GameObject crowbarObject;
+	public GameObject potionObject;
+
 	public class Affliction {
 
 		public int id;
@@ -26,11 +32,13 @@ public class DataStructures : MonoBehaviour {
 
 		public int id;
 		public string name;
+		public GameObject prefab;
 		public Dictionary<int, Affliction> treatmentDict;
 
-			public ToolType(string _name, Dictionary<int, Affliction> _treatmentDict) {
+			public ToolType(string _name, GameObject _prefab, Dictionary<int, Affliction> _treatmentDict) {
 			this.name = _name;
 			this. treatmentDict = _treatmentDict;
+			this.prefab = _prefab;
 			possibleToolTypes.Add(this);
 		}
 	}
@@ -86,28 +94,28 @@ public class DataStructures : MonoBehaviour {
 		// Tools
 		possibleToolTypes = new List<ToolType> ();
 
-		ToolType candle = new ToolType ("Candle", new Dictionary<int, Affliction>(){
+		ToolType candle = new ToolType ("Candle", candleObject, new Dictionary<int, Affliction>(){
 			{ 32, possessed },
 			{ 21, frozen }
 		});
 
-		ToolType magic = new ToolType ("Magic", new Dictionary<int, Affliction> () {
+		ToolType magic = new ToolType ("Magic", magicObject, new Dictionary<int, Affliction> () {
 			{ 31, possessed },
 			{ 53, zombified },
 			{ 41, parasite }
 		});
 
-		ToolType potion = new ToolType ("Potion", new Dictionary<int, Affliction> () {
+		ToolType potion = new ToolType ("Potion", potionObject, new Dictionary<int, Affliction> () {
 			{ 12, missingLimb },
 			{ 22, frozen },
 			{ 43, parasite }
 		});
 			
-		ToolType crowbar = new ToolType ("Crowbar", new Dictionary<int, Affliction> () {
+		ToolType crowbar = new ToolType ("Crowbar", crowbarObject, new Dictionary<int, Affliction> () {
 			{ 42, parasite }
 		});
 
-		ToolType initialRelease = new ToolType ("Initial Release", new Dictionary<int, Affliction> () {
+		ToolType initialRelease = new ToolType ("Initial Release", initialReleaseObject, new Dictionary<int, Affliction> () {
 			{ 30, possessed },
 			{ 20, frozen },
 			{ 40, parasite },

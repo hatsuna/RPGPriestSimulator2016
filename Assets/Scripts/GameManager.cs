@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 	public Transform toolLocation;
 	public static List<GameObject> tools = new List<GameObject>();
 
-	public int toolDistance;
+	public float toolDistance;
 
 	GameObject heldObject;
 
@@ -56,9 +56,13 @@ public class GameManager : MonoBehaviour {
 		List<DataStructures.ToolType> possibleToolTypes = DataStructures.possibleToolTypes;
 		Debug.Log (possibleToolTypes);
 		for(int i = 0; i < possibleToolTypes.Count; i++){
-
-			int distance = i * toolDistance;
+			float distance = i * toolDistance;
+			Debug.Log ("My tool name is: " + possibleToolTypes [i].name);
+			Debug.Log ("My prefab is: "+possibleToolTypes [i].prefab);
+			GameObject itemPrefab = possibleToolTypes [i].prefab;
 			GameObject newTool = (GameObject)(Instantiate(toolPrefab, new Vector3(toolLocation.position.x + distance, toolLocation.position.y, toolLocation.position.z), toolLocation.rotation));
+			GameObject newToolItem = (GameObject)(Instantiate(itemPrefab, newTool.transform.position, itemPrefab.transform.rotation));
+			newToolItem.transform.parent = newTool.transform;
 			tools.Add (newTool);
 			tools[i].GetComponent<Tool>().tooltype = possibleToolTypes[i];
 		}

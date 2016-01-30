@@ -1,4 +1,7 @@
-/Users/phale/GitHub/RPGPriestSimulator2016/obj/Debug/Assembly-CSharp.dll
+/Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/phale/GitHub/RPGPriestSimulator2016/obj/Debug/Assembly-CSharp-firstpass.dll
+/Users/phale/GitHub/RPGPriestSimulator2016/obj/Debug/Assembly-CSharp-firstpass.dll.mdb
 /Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/UnityEngine.dll
 /Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/UnityEditor.dll
 /Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/UnityEngine.Networking.dll
@@ -12,8 +15,3 @@
 /Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/Mono.Cecil.Mdb.dll
-/Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/Assembly-CSharp.dll.mdb
-/Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/Assembly-CSharp.dll
-/Users/phale/GitHub/RPGPriestSimulator2016/obj/Debug/Assembly-CSharp.dll.mdb
-/Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
-/Users/phale/GitHub/RPGPriestSimulator2016/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
