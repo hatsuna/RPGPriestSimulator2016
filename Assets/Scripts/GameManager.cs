@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < tools.Count; i++) {
 			Destroy (tools [i]);
 		}
+		tools.Clear();
 
 
 		List<DataStructures.ToolType> possibleToolTypes = DataStructures.possibleToolTypes;
@@ -70,17 +71,47 @@ public class GameManager : MonoBehaviour {
 		//check if the two match up to create an interaction
 
 		if(trigger.tag == "InteractionPlane" && collider.tag == "Interactable"){
-
-			//check database
-			//check affliction
-			//check tool
-			//do they match?
-
 			DataStructures.ToolType tool = collider.GetComponent<Tool>().tooltype;
 			DataStructures.Affliction affliction = trigger.GetComponent<Victim>().affliction;
 			int afflictionState = trigger.GetComponent<Victim>().treatmentState;
-			if(tool.treatmentDict[afflictionState] == affliction){
+
+			//ugly hardcoded nastiness
+			switch(affliction.name){
+			case("Missing Limb"):
+				afflictionState += 10;
+				break;
+			case("Frozen"):
+				afflictionState += 20;
+				break;
+			case("Possessed"):
+				afflictionState += 30;
+				break;
+			case("Parasite"):
+				afflictionState += 40;
+				break;
+			case("Zombified"):
+				afflictionState += 50;
+				break;
+			}
+
+			if(tool.treatmentDict.ContainsKey(afflictionState) && 
+				(tool.treatmentDict[afflictionState] == affliction)){
 				Debug.Log("these match");
+				//Give Feedback
+				//Get Dialogue
+				//Advance Treatment State
+				trigger.GetComponent<Victim>().treatmentState += 1;
+				//check endstate
+				if(trigger.GetComponent<Victim>().treatmentState ==
+					trigger.GetComponent<Victim>().affliction.endState){
+					trigger.GetComponent<Renderer>().material.color = Color.clear;
+					Debug.Log("I'm Cured!");
+				}
+				//removed used tools and reset them
+				GenerateTools();
+			}else {
+				Debug.Log("these don't match");
+				//Get Dialogue
 
 			}
 
