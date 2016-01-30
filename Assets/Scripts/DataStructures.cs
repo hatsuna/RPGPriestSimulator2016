@@ -7,6 +7,7 @@ public class DataStructures : MonoBehaviour {
 	public static List<Affliction> possibleAfflictions;
 
 	void Start(){
+		// Afflictions
 		possibleAfflictions = new List<Affliction>();
 
 		Affliction missingLimb = new Affliction("Missing Limb");
@@ -15,10 +16,14 @@ public class DataStructures : MonoBehaviour {
 		Affliction Parasite = new Affliction("Parasite");
 		Affliction zombified = new Affliction("Zombified");
 
-		Debug.Log ("Possible Afflictions: ");
-		for (int i=0; i<possibleAfflictions.Count-1; i++){
-			Debug.Log(possibleAfflictions[i].name);
-		}
+		//Debug.Log ("Possible Afflictions: ");
+		//for (int i=0; i<possibleAfflictions.Count-1; i++){
+		//	Debug.Log(possibleAfflictions[i].name);
+		//}
+
+		// Tools 
+
+
 	}
 
 	public class Affliction {
@@ -29,6 +34,16 @@ public class DataStructures : MonoBehaviour {
 		public Affliction (string _name){
 			this.name = _name;
 			possibleAfflictions.Add(this);
+		}
+	}
+
+	public class ToolType {
+
+		public int id;
+		public string name;
+
+		public ToolType(string _name) {
+			this.name = _name;
 		}
 	}
 }
