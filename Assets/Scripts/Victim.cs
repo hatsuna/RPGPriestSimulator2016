@@ -43,7 +43,6 @@ public class Victim : MonoBehaviour {
 		} else if (affliction.name == "Zombified") {
 			gameObject.GetComponent<Renderer>().material.color = Color.green;
 		} else {
-			gameObject.GetComponent<Renderer>().material.color = Color.clear;
 		}
 	}
 }
