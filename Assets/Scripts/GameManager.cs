@@ -106,9 +106,11 @@ public class GameManager : MonoBehaviour {
 					trigger.GetComponent<Victim>().affliction.endState){
 					trigger.GetComponent<Renderer>().material.color = Color.clear;
 					Debug.Log("I'm Cured!");
+					GenerateTools();
 				}
-				//removed used tools and reset them
-				GenerateTools();
+				//removed used tools
+				collider.SetActive(false);
+
 			}else {
 				Debug.Log("these don't match");
 				//Get Dialogue
