@@ -35,7 +35,7 @@ public class Victim : MonoBehaviour {
 	public void ApplyAffliction (DataStructures.Affliction affliction) {
 		// Name matching is ugly, consider switching to id
 		if (affliction.name == "Frozen") {
-			gameObject.GetComponent<SpriteRenderer>().material.color = Color.blue;
+			gameObject.GetComponent<Renderer>().material.color = Color.blue;
 		} else if (affliction.name == "Possessed") {
 			gameObject.GetComponent<Renderer>().material.color = Color.magenta;
 		} else if (affliction.name == "Parasite") {
