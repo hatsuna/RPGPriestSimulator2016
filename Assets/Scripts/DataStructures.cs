@@ -6,6 +6,7 @@ public class DataStructures : MonoBehaviour {
 
 	public static List<Affliction> possibleAfflictions;
 	public static List<ToolType> possibleToolTypes;
+	public static List<Dialogue> possibleDialogueChoices;
 
 	public class Affliction {
 
@@ -32,6 +33,39 @@ public class DataStructures : MonoBehaviour {
 			this. treatmentDict = _treatmentDict;
 			possibleToolTypes.Add(this);
 		}
+	}
+
+	public class Dialogue {
+		public string text;
+		// 1= player 2= friend 3= victim
+		public int spokenBy;
+		// 1= bad 2= neutral 3= good
+		public int goodness;
+		public List<Affliction> relevantAfflictions;
+
+		public Dialogue( string _text, int _spokenBy, int _goodness, List<Affliction> _relevantAfflictions){
+			this.text = _text;
+			this.spokenBy = _spokenBy;
+			this.goodness = _goodness;
+			this.relevantAfflictions = _relevantAfflictions;
+			possibleDialogueChoices.Add(this);
+		}
+	}
+
+	// Returns random dialogue choice with selected goodness and affliction
+	Dialogue getDialogue (int goodness, Affliction affliction ) {
+		// build list of dialogue choice with selected goodness and relevant affliction
+		List<Dialogue> dialogueChoices = new List<Dialogue>();
+		for (int i = 0; i < possibleDialogueChoices.Count; i++) {
+			if (
+					possibleDialogueChoices [i].goodness == goodness 
+					&& possibleDialogueChoices [i].relevantAfflictions.Contains (affliction)) {
+				dialogueChoices.Add (possibleDialogueChoices[i]);
+			};
+		};
+		int randomNum = Random.Range (0, dialogueChoices.Count);
+		Dialogue dialogueChoice = dialogueChoices [randomNum];
+		return dialogueChoice;
 	}
 
 	void Start() {
@@ -82,10 +116,14 @@ public class DataStructures : MonoBehaviour {
 			{ 0, zombified }
 		});
 			
-
 		//Debug.Log ("Possible Tools: ");
 		//for (int i=0; i<possibleToolTypes.Count; i++){
 		//	Debug.Log(possibleToolTypes[i].name);
 		//}
+
+		//Dialogue
+		possibleDialogueChoices = new List<Dialogue>();
+
+
 	}
 }
