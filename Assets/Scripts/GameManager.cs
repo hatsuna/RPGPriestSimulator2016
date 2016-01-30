@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject adventurer;
 	Transform interactionPlane;
+	public GameObject victimPrefab;
+	public GameObject victimLocation;
 
 	GameObject heldObject;
 
@@ -13,6 +15,10 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		// Instantiate adventurer prefab and move to table
+		// This will automatically set up an affliction
+		Instantiate(victimPrefab, victimLocation.transform.position, victimLocation.transform.rotation); 
+
 		//make sure there is a valid adventurer on the altar
 		if (adventurer.tag == "Adventurer"){
 			Debug.Log("You have an adventurer on the altar");
@@ -23,6 +29,7 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 		}
+			
 	}
 
 		// Update is called once per frame
