@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour {
 
 	GameObject heldObject;
 
+	GameObject objectA;
+	GameObject objectB;
+
+
 	// Use this for initialization
 	void Start () {
 		//make sure there is a valid adventurer on the altar
@@ -21,11 +25,24 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
-	
-	// Update is called once per frame
+
+		// Update is called once per frame
 	void Update () {
 		//getting the currently held object from the MouseControl Script
-		heldObject = GetComponent<MouseControl>().heldObject;
-		//if (heldObject  INTERACTS 
+		//heldObject = GetComponent<MouseControl>().heldObject;
+		if(objectA != null && objectB != null){
+			if(objectA.tag == "Interactable" && objectB.tag == "InteractionPlane"){
+				Debug.Log("YOU WIN!!");
+			}
+		}
 	}
+
+	public void ProcessCollisions(GameObject collider, GameObject collided){
+		//interactable objects call this when they collide with something
+		//check if they are colliding with interaction plane (collided)
+		objectA = collider;
+		objectB = collided;
+
+	}
+
 }
