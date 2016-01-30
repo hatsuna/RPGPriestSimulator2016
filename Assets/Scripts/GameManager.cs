@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
-	//public GameObject adventurer;
+	public GameObject adventurer;
 	Transform interactionPlane;
 	public GameObject victimPrefab;
 	public GameObject victimLocation;
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
 		Instantiate(victimPrefab, victimLocation.transform.position, victimLocation.transform.rotation); 
 
 		//make sure there is a valid adventurer on the altar
-		/*if (adventurer.tag == "Adventurer"){
+		if (adventurer.tag == "Adventurer"){
 			//Debug.Log("You have an adventurer on the altar");
 			//if (adventurer.
 			foreach (Transform child in adventurer.transform){
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
 					interactionPlane = child;
 				}
 			}
-		}*/
+		}
 			
 	}
 
@@ -44,11 +44,6 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		//getting the currently held object from the MouseControl Script
 		//heldObject = GetComponent<MouseControl>().heldObject;
-
-		//restart Level
-		if(Input.GetKeyDown(KeyCode.R)){
-			Application.LoadLevel(0);
-		}
 	}
 
 	public void GenerateTools(){
