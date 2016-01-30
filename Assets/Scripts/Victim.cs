@@ -6,9 +6,14 @@ public class Victim : MonoBehaviour {
 
 	public DataStructures.Affliction affliction;
 	public int treatmentState;
+	public Sprite testSprite;
+
 
 	// Use this for initialization
 	void Start () {
+		// Apply sprite
+		gameObject.GetComponent<SpriteRenderer>().sprite=testSprite;
+
 		// Apply a random condition to victim
 		this.affliction = GenerateAfflictions();
 		ApplyAffliction (affliction);
@@ -30,7 +35,7 @@ public class Victim : MonoBehaviour {
 	public void ApplyAffliction (DataStructures.Affliction affliction) {
 		// Name matching is ugly, consider switching to id
 		if (affliction.name == "Frozen") {
-			gameObject.GetComponent<Renderer>().material.color = Color.blue;
+			gameObject.GetComponent<SpriteRenderer>().material.color = Color.blue;
 		} else if (affliction.name == "Possessed") {
 			gameObject.GetComponent<Renderer>().material.color = Color.magenta;
 		} else if (affliction.name == "Parasite") {
