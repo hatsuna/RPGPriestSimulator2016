@@ -1,7 +1,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{19D4C8B6-2454-FC92-E735-6798EC4D7DA1}") = "RPGPriestSimulator2016", "Assembly-CSharp-firstpass.csproj", "{A061E46B-F3A2-9182-9605-60AFCC62B1BC}"
+EndProject
 Project("{19D4C8B6-2454-FC92-E735-6798EC4D7DA1}") = "RPGPriestSimulator2016", "Assembly-CSharp.csproj", "{442671B1-5BF0-544B-E2AC-30081EA23DA0}"
+EndProject
+Project("{19D4C8B6-2454-FC92-E735-6798EC4D7DA1}") = "RPGPriestSimulator2016", "Assembly-CSharp-Editor.csproj", "{74114A73-29D3-B52C-464B-E1B8858113CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +13,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A061E46B-F3A2-9182-9605-60AFCC62B1BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A061E46B-F3A2-9182-9605-60AFCC62B1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A061E46B-F3A2-9182-9605-60AFCC62B1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A061E46B-F3A2-9182-9605-60AFCC62B1BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{442671B1-5BF0-544B-E2AC-30081EA23DA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{442671B1-5BF0-544B-E2AC-30081EA23DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{442671B1-5BF0-544B-E2AC-30081EA23DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{442671B1-5BF0-544B-E2AC-30081EA23DA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74114A73-29D3-B52C-464B-E1B8858113CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74114A73-29D3-B52C-464B-E1B8858113CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74114A73-29D3-B52C-464B-E1B8858113CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74114A73-29D3-B52C-464B-E1B8858113CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
