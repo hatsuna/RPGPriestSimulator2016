@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
@@ -8,6 +9,9 @@ public class GameManager : MonoBehaviour {
 	Transform interactionPlane;
 	public GameObject victimPrefab;
 	public GameObject victimLocation;
+
+	public GameObject toolPrefab;
+	public Transform toolLocation;
 
 	GameObject heldObject;
 
@@ -38,21 +42,33 @@ public class GameManager : MonoBehaviour {
 		//heldObject = GetComponent<MouseControl>().heldObject;
 	}
 
-	// 
+	public void GenerateTools(){
+		List<DataStructures.ToolType> possibleToolTypes = DataStructures.possibleToolTypes;
+		foreach( DataStructures.ToolType tool in possibleToolTypes){
+			Instantiate(toolPrefab, toolLocation.position, toolLocation.rotation);
+		}
+
+	}
+
 	public void ProcessTriggers(GameObject trigger, GameObject collider){
 		//interactable trigger sites call this when they collide with a rigidbody
 		//check if the two match up to create an interaction
 
 		if(trigger.tag == "InteractionPlane" && collider.tag == "Interactable"){
-			
-			//DataStructures
-
-			//DataStructures.Affliction VictimAffliction = trigger.GetComponent<Victim>().affliction;
 
 			//check database
 			//check affliction
 			//check tool
 			//do they match?
+
+			DataStructures.ToolType tool = collider.GetComponent<Tool>().tooltype;
+			DataStructures.Affliction affliction = trigger.GetComponent<Victim>().affliction;
+			int afflictionState = trigger.GetComponent<Victim>().treatmentState;
+			if(tool.treatmentDict[afflictionState] == affliction){
+				Debug.Log("these match");
+
+			}
+
 		}
 	}
 
