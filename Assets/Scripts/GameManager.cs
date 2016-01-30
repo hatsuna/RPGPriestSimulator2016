@@ -44,11 +44,16 @@ public class GameManager : MonoBehaviour {
 		//check if the two match up to create an interaction
 
 		if(trigger.tag == "InteractionPlane" && collider.tag == "Interactable"){
-			textUI.text = "YOU WIN!!!";
-			Debug.Log("YOU WIN!!");
+			
+			//DataStructures
 
+			//DataStructures.Affliction VictimAffliction = trigger.GetComponent<Victim>().affliction;
+
+			//check database
+			//check affliction
+			//check tool
+			//do they match?
 		}
-		
 	}
 
 }
