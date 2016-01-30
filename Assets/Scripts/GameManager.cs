@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour {
 	Transform interactionPlane;
 
 	GameObject heldObject;
+
+	public Text textUI;
 
 	// Use this for initialization
 	void Start () {
@@ -21,11 +24,24 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
-	
-	// Update is called once per frame
+
+		// Update is called once per frame
 	void Update () {
 		//getting the currently held object from the MouseControl Script
-		heldObject = GetComponent<MouseControl>().heldObject;
-		//if (heldObject  INTERACTS 
+		//heldObject = GetComponent<MouseControl>().heldObject;
 	}
+
+	// 
+	public void ProcessTriggers(GameObject trigger, GameObject collider){
+		//interactable trigger sites call this when they collide with a rigidbody
+		//check if the two match up to create an interaction
+
+		if(trigger.tag == "InteractionPlane" && collider.tag == "Interactable"){
+			textUI.text = "YOU WIN!!!";
+			Debug.Log("YOU WIN!!");
+
+		}
+		
+	}
+
 }
