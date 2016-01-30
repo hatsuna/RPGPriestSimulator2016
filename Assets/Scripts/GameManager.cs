@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject toolPrefab;
 	public Transform toolLocation;
+	public static List<GameObject> tools = new List<GameObject>();
 
 	GameObject heldObject;
 
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour {
 		// Instantiate adventurer prefab and move to table
 		// This will automatically set up an affliction
 		Instantiate(victimPrefab, victimLocation.transform.position, victimLocation.transform.rotation); 
+
+		GenerateTools();
 
 		//make sure there is a valid adventurer on the altar
 		if (adventurer.tag == "Adventurer"){
@@ -44,8 +47,13 @@ public class GameManager : MonoBehaviour {
 
 	public void GenerateTools(){
 		List<DataStructures.ToolType> possibleToolTypes = DataStructures.possibleToolTypes;
-		foreach( DataStructures.ToolType tool in possibleToolTypes){
-			Instantiate(toolPrefab, toolLocation.position, toolLocation.rotation);
+		for(int i = 0; i < possibleToolTypes.Count - 1; i++){
+			Debug.Log(possibleToolTypes[i].name);
+
+
+			/*GameObject newTool = (GameObject)(Instantiate(toolPrefab, new Vector3(toolLocation.position.x + i, toolLocation.position.y, toolLocation.position.z), toolLocation.rotation));
+			tools.Add (newTool);
+			tools[i].GetComponent<Tool>().tooltype = possibleToolTypes[i];*/
 		}
 
 	}

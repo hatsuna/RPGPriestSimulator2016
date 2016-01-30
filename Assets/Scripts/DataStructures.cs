@@ -27,9 +27,9 @@ public class DataStructures : MonoBehaviour {
 		public string name;
 		public Dictionary<int, Affliction> treatmentDict;
 
-			public ToolType(string _name, Dictionary<int, Affliction> _treatmentDict) {
+		public ToolType(string _name, Dictionary<int, Affliction> _treatmentDict) {
 			this.name = _name;
-			this. treatmentDict = _treatmentDict;
+			this.treatmentDict = _treatmentDict;
 			possibleToolTypes.Add(this);
 		}
 	}
