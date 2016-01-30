@@ -44,10 +44,10 @@ public class DataStructures : MonoBehaviour {
 		Affliction parasite = new Affliction ("Parasite", 4);
 		Affliction zombified = new Affliction ("Zombified", 4);
 
-		//Debug.Log ("Possible Afflictions: ");
-		//for (int i=0; i<possibleAfflictions.Count-1; i++){
-		//	Debug.Log(possibleAfflictions[i].name);
-		//}
+		Debug.Log ("Possible Afflictions: ");
+		for (int i=0; i<possibleAfflictions.Count-1; i++){
+			Debug.Log(possibleAfflictions[i].name);
+		}
 
 		// Tools
 		possibleToolTypes = new List<ToolType> ();
@@ -83,9 +83,9 @@ public class DataStructures : MonoBehaviour {
 		});
 			
 
-		Debug.Log ("Possible Afflictions: ");
-		for (int i=0; i<possibleToolTypes.Count; i++){
-			Debug.Log(possibleToolTypes[i].name);
-		}
+		//Debug.Log ("Possible Tools: ");
+		//for (int i=0; i<possibleToolTypes.Count; i++){
+		//	Debug.Log(possibleToolTypes[i].name);
+		//}
 	}
 }
