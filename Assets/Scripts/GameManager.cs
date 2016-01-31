@@ -26,7 +26,10 @@ public class GameManager : MonoBehaviour {
 	public GameObject KarmaScoreObject;
 	public int KarmaScore = 0;
 
-	public Text textUI;
+	public Text leftTextUI;
+	public Text rightTextUI;
+
+	public GameObject HuDCanvas;
 
 	// Use this for initialization
 	void Start () {
@@ -92,6 +95,9 @@ public class GameManager : MonoBehaviour {
 		//interactable trigger sites call this when they collide with a rigidbody
 		//check if the two match up to create an interaction
 
+		DialogueManager dialogueManager = HuDCanvas.GetComponent<DialogueManager>();
+
+
 		if(trigger.tag == "InteractionPlane" && collider.tag == "Interactable"){
 			DataStructures.ToolType tool = collider.GetComponent<Tool>().tooltype;
 			DataStructures.Affliction affliction = trigger.GetComponent<Victim>().affliction;
@@ -134,7 +140,14 @@ public class GameManager : MonoBehaviour {
 				//Get Dialogue
 				//1 bad, 2 neutral, 3 good
 				speech = gameObject.GetComponent<DataStructures>().getDialogue(3, affliction);
-				textUI.text = speech.text;
+				if (speech.spokenBy == 1) {
+					rightTextUI.text = speech.text;
+					dialogueManager.UpdateDialogueRight ();
+				} else if (speech.spokenBy == 2) {
+					leftTextUI.text = speech.text;
+					dialogueManager.UpdateDialogueLeft ();
+				}
+
 
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
@@ -159,8 +172,13 @@ public class GameManager : MonoBehaviour {
 				Debug.Log("these don't match");
 				//Get Dialogue
 				speech = gameObject.GetComponent<DataStructures>().getDialogue(1, affliction);
-				textUI.text = speech.text;
-
+				if (speech.spokenBy == 1) {
+					rightTextUI.text = speech.text;
+					dialogueManager.UpdateDialogueRight ();
+				} else if (speech.spokenBy == 2) {
+					leftTextUI.text = speech.text;
+					dialogueManager.UpdateDialogueLeft ();
+				}
 			}
 
 		}
