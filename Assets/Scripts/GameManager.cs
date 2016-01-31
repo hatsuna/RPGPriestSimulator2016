@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour {
 
 			if(tool.treatmentDict.ContainsKey(afflictionState) && 
 				(tool.treatmentDict[afflictionState] == affliction)){
+
 				//Give Feedback
 				GameObject newSpell = (GameObject)(Instantiate(spellEffectPrefab, spellEffectLocation.transform.position, spellEffectLocation.transform.rotation));
 				newSpell.GetComponent<Renderer>().sortingLayerName = "Particles";
@@ -114,9 +115,12 @@ public class GameManager : MonoBehaviour {
 				};
 				newSpell.SetActive (true);
 				spellsToClean.Add (newSpell);
+
 				//Get Dialogue
+
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
+
 				//check endstate
 				if(trigger.GetComponent<Victim>().treatmentState ==
 					trigger.GetComponent<Victim>().affliction.endState){
@@ -124,6 +128,7 @@ public class GameManager : MonoBehaviour {
 					Debug.Log("I'm Cured!");
 					GenerateTools();
 				}
+
 				//removed used tools
 				collider.SetActive(false);
 
