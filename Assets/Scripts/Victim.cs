@@ -8,15 +8,18 @@ public class Victim : MonoBehaviour {
 	public int treatmentState;
 	public Sprite testSprite;
 
+	public GameObject parasitePrefab;
+
 
 	// Use this for initialization
 	void Start () {
 		// Apply sprite
 		gameObject.GetComponent<SpriteRenderer>().sprite=testSprite;
 
+		// Going to move this bit to game manager for a second, may put back
 		// Apply a random condition to victim
-		this.affliction = GenerateAfflictions();
-		ApplyAffliction (affliction);
+		//this.affliction = GenerateAfflictions();
+		//ApplyAffliction (affliction);
 		//Debug.Log("I'm afflicted with: " + affliction.name);
 	}
 	
@@ -24,25 +27,25 @@ public class Victim : MonoBehaviour {
 	void Update () {
 	
 	}
-
-	public DataStructures.Affliction GenerateAfflictions () {
-		List<DataStructures.Affliction> possibleAfflictions = DataStructures.possibleAfflictions;
-		int afflictionIndex = Random.Range (0, possibleAfflictions.Count - 1);
-		Debug.Log ("My affliction index is: " + afflictionIndex);
-		return possibleAfflictions [afflictionIndex];
-	} 
-
+		
 	public void ApplyAffliction (DataStructures.Affliction affliction) {
 		// Name matching is ugly, consider switching to id
+
+		this.affliction = affliction;
+
 		if (affliction.name == "Frozen") {
-			gameObject.GetComponent<Renderer>().material.color = Color.blue;
+			gameObject.GetComponent<Renderer> ().material.color = Color.blue;
 		} else if (affliction.name == "Possessed") {
-			gameObject.GetComponent<Renderer>().material.color = Color.magenta;
+			gameObject.GetComponent<Renderer> ().material.color = Color.magenta;
 		} else if (affliction.name == "Parasite") {
-			gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+			gameObject.GetComponent<Renderer> ().material.color = Color.yellow;
+			GameObject newParasite = (GameObject)(Instantiate (parasitePrefab, new Vector3 (gameObject.transform.position.x + 0.68f, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation));
 		} else if (affliction.name == "Zombified") {
-			gameObject.GetComponent<Renderer>().material.color = Color.green;
+			gameObject.GetComponent<Renderer> ().material.color = Color.grey;
+		} else if (affliction.name == "Poison") {
+			gameObject.GetComponent<Renderer> ().material.color = Color.green;
 		} else {
+			gameObject.GetComponent<Renderer> ().material.color = Color.red;
 		}
 	}
 }
