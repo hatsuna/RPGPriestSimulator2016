@@ -131,8 +131,8 @@ public class GameManager : MonoBehaviour {
 				//Get Dialogue
 
 				//1 bad, 2 neutral, 3 good
-				//speech = gameObject.GetComponent<DataStructures>().getDialogue(3, affliction);
-				//textUI.text = speech.text;
+				speech = gameObject.GetComponent<DataStructures>().getDialogue(3, affliction);
+				textUI.text = speech.text;
 
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
@@ -153,8 +153,8 @@ public class GameManager : MonoBehaviour {
 			}else {
 				Debug.Log("these don't match");
 				//Get Dialogue
-				//speech = gameObject.GetComponent<DataStructures>().getDialogue(1, affliction);
-				//textUI.text = speech.text;
+				speech = gameObject.GetComponent<DataStructures>().getDialogue(1, affliction);
+				textUI.text = speech.text;
 
 			}
 
