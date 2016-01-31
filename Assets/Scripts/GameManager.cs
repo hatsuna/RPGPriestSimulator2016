@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
-	public GameObject adventurer;
+	//public GameObject adventurer;
 	Transform interactionPlane;
 	public GameObject victimPrefab;
 	public GameObject victimLocation;
@@ -27,11 +27,9 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		// Instantiate adventurer prefab and move to table
-		// This will automatically set up an affliction
-		Instantiate(victimPrefab, victimLocation.transform.position, victimLocation.transform.rotation); 
-
-		//make sure there is a valid adventurer on the altar
+		 
+		SpawnVictim();
+		/*make sure there is a valid adventurer on the altar
 		if (adventurer.tag == "Adventurer"){
 			//Debug.Log("You have an adventurer on the altar");
 			//if (adventurer.
@@ -40,7 +38,7 @@ public class GameManager : MonoBehaviour {
 					interactionPlane = child;
 				}
 			}
-		}
+		}*/
 			
 	}
 
@@ -49,6 +47,18 @@ public class GameManager : MonoBehaviour {
 		//getting the currently held object from the MouseControl Script
 		//heldObject = GetComponent<MouseControl>().heldObject;
 
+        //restart Level
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Application.LoadLevel(0);
+        }
+
+	}
+
+	void SpawnVictim(){
+		// Instantiate adventurer prefab and move to table
+		// This will automatically set up an affliction
+		Instantiate(victimPrefab, victimLocation.transform.position, victimLocation.transform.rotation);
 	}
 
 	public void GenerateTools(){
@@ -103,6 +113,8 @@ public class GameManager : MonoBehaviour {
 				break;
 			}
 
+			DataStructures.Dialogue speech;
+
 			if(tool.treatmentDict.ContainsKey(afflictionState) && 
 				(tool.treatmentDict[afflictionState] == affliction)){
 
@@ -118,6 +130,10 @@ public class GameManager : MonoBehaviour {
 
 				//Get Dialogue
 
+				//1 bad, 2 neutral, 3 good
+				//speech = gameObject.GetComponent<DataStructures>().getDialogue(3, affliction);
+				//textUI.text = speech.text;
+
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
 
@@ -127,6 +143,8 @@ public class GameManager : MonoBehaviour {
 					trigger.GetComponent<Renderer>().material.color = Color.clear;
 					Debug.Log("I'm Cured!");
 					GenerateTools();
+					Destroy(trigger);
+					SpawnVictim();
 				}
 
 				//removed used tools
@@ -135,6 +153,8 @@ public class GameManager : MonoBehaviour {
 			}else {
 				Debug.Log("these don't match");
 				//Get Dialogue
+				//speech = gameObject.GetComponent<DataStructures>().getDialogue(1, affliction);
+				//textUI.text = speech.text;
 
 			}
 
