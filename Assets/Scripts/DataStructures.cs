@@ -125,14 +125,14 @@ public class DataStructures : MonoBehaviour {
 		possibleToolTypes = new List<ToolType> ();
 
 		ToolType candle = new ToolType ("Candle", candleObject, new Dictionary<int, Affliction> () {
-			{ 33, possessed },
+			{ 31, possessed },
 			{ 21, frozen },
-			{ 52, zombified }
+			{ 51, zombified }
 		});
 
 		ToolType magic = new ToolType ("Magic", magicObject, new Dictionary<int, Affliction> () {
 			{ 12, poison },
-			{ 31, possessed },
+			{ 33, possessed },
 			{ 41, parasite }
 		});
 
@@ -144,12 +144,12 @@ public class DataStructures : MonoBehaviour {
 			
 		ToolType crowbar = new ToolType ("Crowbar", crowbarObject, new Dictionary<int, Affliction> () {
 			{ 42, parasite },
-			{ 53, zombified }
+			{ 52, zombified }
 		});
 
 		ToolType holySymbol = new ToolType ("Holy Symbol", holySymbolObject, new Dictionary<int, Affliction> () {
 			{32, possessed},
-			{51, zombified}
+			{53, zombified}
 		});
 			
 
@@ -733,6 +733,12 @@ public class DataStructures : MonoBehaviour {
             new List<Affliction> (){ frozen }
             );
 
+        StartingDialogue brainFreeze = new StartingDialogue (
+            "I think it might just be brain freeze.",
+            1,
+            new List<Affliction> (){ frozen }
+            );        
+
         StartingDialogue deathPeak = new StartingDialogue (
             "We went up Death Peak to admire the view. It was pretty romantic until the frostbite set in.",
             1,
@@ -741,7 +747,7 @@ public class DataStructures : MonoBehaviour {
 
         //UNSYMPATHETIC starting dialogue for POSSESSED
         StartingDialogue oweMoney = new StartingDialogue (
-            "To be honest, I kind of prefer the demon over him. But he owes me money, so.",
+            "To be honest, I kind of prefer the ghost over him. But he owes me money, so.",
             1,
             new List<Affliction> (){ possessed }
             );
@@ -806,7 +812,7 @@ public class DataStructures : MonoBehaviour {
 
         //SYMPATHETIC starting dialogue for FROZEN
         StartingDialogue hugeShip = new StartingDialogue (
-            "It’s funny you should ask! This story has EVERYTHING...drama, romance, TRAGEDY! He met this girl and it was really romantic and wonderful. They were on this ship, but then disaster struck! Long story short, it started sinking, there was this tiny piece of wreckage that was actually PERFECTLY serviceable yadda yadda yadda you get the story.",
+            "He met this girl and they were in love but long story short, the ship they were on sank, there was this tiny piece of wreckage that was actually PERFECTLY serviceable yadda yadda yadda you get the story.",
             3,
             new List<Affliction> (){ frozen }
             );
