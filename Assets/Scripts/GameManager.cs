@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		 
 		SpawnVictim();
-		//make sure there is a valid adventurer on the altar
+		/*make sure there is a valid adventurer on the altar
 		if (adventurer.tag == "Adventurer"){
 			//Debug.Log("You have an adventurer on the altar");
 			//if (adventurer.
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
 					interactionPlane = child;
 				}
 			}
-		}
+		}*/
 			
 	}
 
@@ -46,6 +46,12 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		//getting the currently held object from the MouseControl Script
 		//heldObject = GetComponent<MouseControl>().heldObject;
+
+        //restart Level
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Application.LoadLevel(0);
+        }
 
 	}
 
@@ -123,13 +129,11 @@ public class GameManager : MonoBehaviour {
 				spellsToClean.Add (newSpell);
 
 				//Get Dialogue
-<<<<<<< HEAD
+
 				//1 bad, 2 neutral, 3 good
 				//speech = gameObject.GetComponent<DataStructures>().getDialogue(3, affliction);
 				//textUI.text = speech.text;
-=======
 
->>>>>>> 579dd9e8e818c3bb040f0d07af2bd21e6346c94a
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
 
