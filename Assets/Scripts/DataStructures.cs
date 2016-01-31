@@ -75,7 +75,7 @@ public class DataStructures : MonoBehaviour {
 	}
 
 	// Returns random dialogue choice with selected goodness and affliction
-	Dialogue getDialogue (int goodness, Affliction affliction ) {
+	public Dialogue getDialogue (int goodness, Affliction affliction ) {
 		// build list of dialogue choice with selected goodness and relevant affliction
 		List<Dialogue> dialogueChoices = new List<Dialogue>();
 		for (int i = 0; i < possibleDialogueChoices.Count; i++) {
