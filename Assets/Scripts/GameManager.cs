@@ -68,7 +68,8 @@ public class GameManager : MonoBehaviour {
 			}
 		}*/
 
-		bloodSpray = (GameObject)(Instantiate(bloodParticles, victimLocation.transform.position, victimLocation.transform.rotation));
+		bloodSpray = (GameObject)(Instantiate (bloodParticles, new Vector3(victimLocation.transform.position.x, victimLocation.transform.position.y, victimLocation.transform.position.z - 0.5f), Quaternion.identity));
+		bloodSpray.GetComponent<Renderer> ().sortingLayerName = "Particles";
 		bloodSpray.SetActive(false);
 			
 	}
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		if (gameStarted) {
 			timeRemaining -= Time.deltaTime;
-			timeRemainingText.text = "Time Remaining: " + timeRemaining;
+			timeRemainingText.text = "Time Remaining: " + (int)timeRemaining;
 			curedLinksText.text = "Cured Links: " + curedLinks;
 			cureChainText.text = "Cure Chain: " + cureChain;
 		}
