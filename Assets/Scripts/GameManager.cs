@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour {
 	public GameObject spellEffectLocation;
 	public List<GameObject> spellsToClean= new List<GameObject>();
 
+	public GameObject KarmaScoreObject;
+	public int KarmaScore = 0;
+
 	public Text textUI;
 
 	// Use this for initialization
@@ -129,10 +132,9 @@ public class GameManager : MonoBehaviour {
 				spellsToClean.Add (newSpell);
 
 				//Get Dialogue
-
 				//1 bad, 2 neutral, 3 good
-				//speech = gameObject.GetComponent<DataStructures>().getDialogue(3, affliction);
-				//textUI.text = speech.text;
+				speech = gameObject.GetComponent<DataStructures>().getDialogue(3, affliction);
+				textUI.text = speech.text;
 
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
@@ -142,6 +144,9 @@ public class GameManager : MonoBehaviour {
 					trigger.GetComponent<Victim>().affliction.endState){
 					trigger.GetComponent<Renderer>().material.color = Color.clear;
 					Debug.Log("I'm Cured!");
+					// Give Karma
+					KarmaScore += 40;
+					KarmaScoreObject.GetComponent<Text> ().text = KarmaScore.ToString();
 					GenerateTools();
 					Destroy(trigger);
 					SpawnVictim();
@@ -153,8 +158,8 @@ public class GameManager : MonoBehaviour {
 			}else {
 				Debug.Log("these don't match");
 				//Get Dialogue
-				//speech = gameObject.GetComponent<DataStructures>().getDialogue(1, affliction);
-				//textUI.text = speech.text;
+				speech = gameObject.GetComponent<DataStructures>().getDialogue(1, affliction);
+				textUI.text = speech.text;
 
 			}
 
