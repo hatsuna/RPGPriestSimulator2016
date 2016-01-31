@@ -7,6 +7,7 @@ public class DataStructures : MonoBehaviour {
 	public static List<Affliction> possibleAfflictions;
 	public static List<ToolType> possibleToolTypes;
 	public static List<Dialogue> possibleDialogueChoices;
+	public static List<StartingDialogue> possibleStartingDialogueChoices;
 
 	public GameObject candleObject;
 	public GameObject initialReleaseObject;
@@ -71,6 +72,7 @@ public class DataStructures : MonoBehaviour {
 			this.text = _text;
 			this.sympathy = _sympathy;
 			this.relevantAfflictions = _relevantAfflications;
+			possibleStartingDialogueChoices.Add(this);
 		}
 	}
 
@@ -88,6 +90,20 @@ public class DataStructures : MonoBehaviour {
 		int randomNum = Random.Range (0, dialogueChoices.Count);
 		Dialogue dialogueChoice = dialogueChoices [randomNum];
 		return dialogueChoice;
+	}
+
+	public static StartingDialogue getStarting (Affliction affliction) {
+		List<StartingDialogue> possibleStarting = new List<StartingDialogue> ();
+		for (int i = 0; i < possibleStartingDialogueChoices.Count; i++) {
+			for (int j = 0; j < possibleStartingDialogueChoices [i].relevantAfflictions.Count; j++) {
+				if (possibleStartingDialogueChoices [i].relevantAfflictions [j] == affliction) {
+					possibleStarting.Add (possibleStartingDialogueChoices [i]);
+				}
+			}
+		}
+		int randomNum = Random.Range (0, possibleStarting.Count);
+		StartingDialogue startingDialogueChoice = possibleStarting [randomNum];
+		return startingDialogueChoice;
 	}
 
 	void Start() {
@@ -154,6 +170,7 @@ public class DataStructures : MonoBehaviour {
 
 		// dialogue
 		possibleDialogueChoices = new List<Dialogue> ();
+		possibleStartingDialogueChoices = new List<StartingDialogue> ();
 
 		//GOOD dialogue spoken by FRIEND during NONSPECIFIC treatment
 		Dialogue goodJob = new Dialogue (
@@ -579,14 +596,101 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ zombified }
 		);    
 
-		//INITIAL DIALOGUE BELOW
-		//UNSYMPATHETIC starting dialogue for MISSING LIMB
-		StartingDialogue testTest = new StartingDialogue (
-			                            "OMG, we ran into this totally rad dragon. Well, it was rad until it took a bite out of my friend. Oh, it ate some villagers too but who cares?",
-			                            1,
-			                            new List<Affliction> (){ missingLimb }
-		                            );
+		StartingDialogue radDragon = new StartingDialogue (
+			"OMG, we ran into this totally rad dragon. Well, it was rad until it took a bite out of my friend. Oh, it ate some villagers too but who cares?",
+			1,
+			new List<Affliction> (){ missingLimb }
+		);
 
+		StartingDialogue noWrestle = new StartingDialogue (
+			"This is a disaster. He’s never lost at arm-wrestling before!",
+			1,
+			new List<Affliction> (){ missingLimb }
+		);
+
+		//UNSYMPATHETIC starting dialogue for FROZEN
+		StartingDialogue meanSquirtle = new StartingDialogue (
+			"I told him he shouldn’t tease Squirtles in the dead of winter, but no one ever listens to me.",
+			1,
+			new List<Affliction> (){ frozen }
+		);
+
+		StartingDialogue foxCoat = new StartingDialogue (
+			"He refused to wear his 100,000 GP coat because he claimed that fox fur is SO not on trend right now.",
+			1,
+			new List<Affliction> (){ frozen }
+		);
+
+		//UNSYMPATHETIC starting dialogue for POSSESSED
+		StartingDialogue oweMoney = new StartingDialogue (
+			"To be honest, I kind of prefer the demon over him. But he owes me money, so.",
+			1,
+			new List<Affliction> (){ possessed }
+		);
+
+		//UNSYMPATHETIC starting dialogue for PARASITE
+		StartingDialogue garbagePerson = new StartingDialogue (
+			"What do you expect from a garbage person like this guy?",
+			1,
+			new List<Affliction> (){ parasite }
+		);
+
+		//UNSYMPATHETIC starting dialogue for ZOMBIFIED
+		StartingDialogue graveyardFreak = new StartingDialogue (
+			"I told him to stop wandering around the graveyard and pushing on tombstones like a freak.",
+			1,
+			new List<Affliction> (){ zombified }
+		);
+
+		/*      //SYMPATHETIC starting dialogue for POISON
+
+		StartingDialogue lifeSaver = new StartingDialogue (
+			"Someone was trying to kill me! He saved my life!",
+			3,
+			new List<Affliction> (){ poison }
+		);
+		*/
+
+		//SYMPATHETIC starting dialogue for MISSING LIMB
+		StartingDialogue orphanSaver = new StartingDialogue (
+			"He was saving orphans from raiders! Also cats!",
+			3,
+			new List<Affliction> (){ missingLimb }
+		);
+
+		//SYMPATHETIC starting dialogue for FROZEN
+		StartingDialogue hugeShip = new StartingDialogue (
+			"It’s funny you should ask! This story has EVERYTHING...drama, romance, TRAGEDY! He met this girl and it was really romantic and wonderful. They were on this ship, but then disaster struck! Long story short, it started sinking, there was this tiny piece of wreckage that was actually PERFECTLY serviceable yadda yadda yadda you get the story.",
+			3,
+			new List<Affliction> (){ frozen }
+		);
+
+		StartingDialogue polarPlunge = new StartingDialogue (
+			"He was participating in the Snowpeak Polar Bear Plunge and I guess he plunged a little too long.",
+			3,
+			new List<Affliction> (){ frozen }
+		);        
+
+		//SYMPATHETIC starting dialogue for POSSESSED
+		StartingDialogue familyCurse = new StartingDialogue (
+			"It's not his fault he has a family curse. His grandma was a jerk to a necromancer one time or something.",
+			3,
+			new List<Affliction> (){ possessed }
+		);
+
+		//SYMPATHETIC starting dialogue for PARASITE
+		StartingDialogue badLandlord = new StartingDialogue (
+			"We've been telling the landlord for months about the infestation. It was only a matter of time before we got overrun. Btw, we're subletting if you're in the market...",
+			3,
+			new List<Affliction> (){ parasite }
+		);
+
+		//SYMPATHETIC starting dialogue for ZOMBIFIED
+		StartingDialogue twoPregnant = new StartingDialogue (
+			"He saved TWO pregnant ladies!",
+			3,
+			new List<Affliction> (){ zombified }
+		);
 
 	}
 }

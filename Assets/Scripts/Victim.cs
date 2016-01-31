@@ -16,9 +16,10 @@ public class Victim : MonoBehaviour {
 		// Apply sprite
 		gameObject.GetComponent<SpriteRenderer>().sprite=testSprite;
 
+		// Going to move this bit to game manager for a second, may put back
 		// Apply a random condition to victim
-		this.affliction = GenerateAfflictions();
-		ApplyAffliction (affliction);
+		//this.affliction = GenerateAfflictions();
+		//ApplyAffliction (affliction);
 		//Debug.Log("I'm afflicted with: " + affliction.name);
 	}
 	
@@ -26,14 +27,7 @@ public class Victim : MonoBehaviour {
 	void Update () {
 	
 	}
-
-	public DataStructures.Affliction GenerateAfflictions () {
-		List<DataStructures.Affliction> possibleAfflictions = DataStructures.possibleAfflictions;
-		int afflictionIndex = Random.Range (0, possibleAfflictions.Count - 1);
-		Debug.Log ("My affliction index is: " + afflictionIndex);
-		return possibleAfflictions [afflictionIndex];
-	} 
-
+		
 	public void ApplyAffliction (DataStructures.Affliction affliction) {
 		// Name matching is ugly, consider switching to id
 		if (affliction.name == "Frozen") {

@@ -31,9 +31,11 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject HuDCanvas;
 
+	public AudioSource audioGood;
+	public AudioSource audioBad;
+
 	// Use this for initialization
 	void Start () {
-		 
 		SpawnVictim();
 		/*make sure there is a valid adventurer on the altar
 		if (adventurer.tag == "Adventurer"){
@@ -59,12 +61,25 @@ public class GameManager : MonoBehaviour {
             Application.LoadLevel(0);
         }
 
+
 	}
 
 	void SpawnVictim(){
+
+		DialogueManager dialogueManager = HuDCanvas.GetComponent<DialogueManager>();
+
+		DataStructures.Affliction newAffliction = GenerateAfflictions();
+
+		//Add starting dialogue
+		DataStructures.StartingDialogue startDialogue = DataStructures.getStarting (newAffliction);
+		leftTextUI.text = startDialogue.text;
+		dialogueManager.UpdateDialogueLeft ();
+
 		// Instantiate adventurer prefab and move to table
 		// This will automatically set up an affliction
-		Instantiate(victimPrefab, victimLocation.transform.position, victimLocation.transform.rotation);
+		GameObject newVictim = (GameObject)(Instantiate(victimPrefab, victimLocation.transform.position, victimLocation.transform.rotation));
+		// Apply affliction to spawned victim
+		newVictim.GetComponent<Victim> ().ApplyAffliction (newAffliction);
 	}
 
 	public void GenerateTools(){
@@ -132,10 +147,14 @@ public class GameManager : MonoBehaviour {
 				newSpell.GetComponent<Renderer>().sortingLayerName = "Particles";
 				Renderer[] spellRenderers = newSpell.GetComponentsInChildren<Renderer>();
 				for (int i = 0; i < spellRenderers.Length - 1; i++) {
-					spellRenderers [i].sortingLayerName = "Particle";
+					spellRenderers [i].sortingLayerName = "Particles";
 				};
 				newSpell.SetActive (true);
 				spellsToClean.Add (newSpell);
+
+				// Give Audio Feedback
+				//audioGood.time = 0.6f;
+				audioGood.Play ();
 
 				//Get Dialogue
 				//1 bad, 2 neutral, 3 good
@@ -151,6 +170,7 @@ public class GameManager : MonoBehaviour {
 
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
+				CheckVisualChanges (trigger.GetComponent<Victim> ().treatmentState, affliction);
 
 				//check endstate
 				if(trigger.GetComponent<Victim>().treatmentState ==
@@ -169,11 +189,11 @@ public class GameManager : MonoBehaviour {
 				collider.SetActive(false);
 
 				// Check for Visual Changes
-				if (collider.transform.parent.GetComponent<Victim> ().affliction.name == "Parasite") {
+				//if (collider.transform.parent.GetComponent<Victim> ().affliction.name == "Parasite") {
 					//delete parasite
-				}
+				//}
 
-			}else {
+			} else {
 				Debug.Log("these don't match");
 				//Get Dialogue
 				speech = gameObject.GetComponent<DataStructures>().getDialogue(1, affliction);
@@ -184,9 +204,21 @@ public class GameManager : MonoBehaviour {
 					leftTextUI.text = speech.text;
 					dialogueManager.UpdateDialogueLeft ();
 				}
-			}
 
+				// Play Error Sound
+				audioBad.Play();
+			}
 		}
 	}
+
+	void CheckVisualChanges(int treatmentState, DataStructures.Affliction affliction){
+	}
+
+	public DataStructures.Affliction GenerateAfflictions () {
+		List<DataStructures.Affliction> possibleAfflictions = DataStructures.possibleAfflictions;
+		int afflictionIndex = Random.Range (0, possibleAfflictions.Count - 1);
+		Debug.Log ("My affliction index is: " + afflictionIndex);
+		return possibleAfflictions [afflictionIndex];
+	} 
 
 }
