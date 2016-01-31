@@ -34,9 +34,13 @@ public class GameManager : MonoBehaviour {
 	public AudioSource audioGood;
 	public AudioSource audioBad;
 
+	public int curedLinks = 0;
+
+	public int timeRemaining = 120;
+
 	// Use this for initialization
 	void Start () {
-		SpawnVictim();
+		//SpawnVictim();
 		/*make sure there is a valid adventurer on the altar
 		if (adventurer.tag == "Adventurer"){
 			//Debug.Log("You have an adventurer on the altar");
@@ -64,7 +68,7 @@ public class GameManager : MonoBehaviour {
 
 	}
 
-	void SpawnVictim(){
+	public void SpawnVictim(){
 
 		DialogueManager dialogueManager = HuDCanvas.GetComponent<DialogueManager>();
 
@@ -180,6 +184,7 @@ public class GameManager : MonoBehaviour {
 					// Give Karma
 					KarmaScore += 40;
 					KarmaScoreObject.GetComponent<Text> ().text = KarmaScore.ToString();
+					curedLinks += 1;
 					GenerateTools();
 					Destroy(trigger);
 					SpawnVictim();

@@ -45,11 +45,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ChangeSprite.cs" />
      <Compile Include="Assets\Scripts\DataStructures.cs" />
      <Compile Include="Assets\Scripts\DialogueManager.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\InteractionTriggers.cs" />
      <Compile Include="Assets\Scripts\MouseControl.cs" />
+     <Compile Include="Assets\Scripts\StartButton.cs" />
+     <Compile Include="Assets\Scripts\TextTime.cs" />
+     <Compile Include="Assets\Scripts\TitleCanvasScript.cs" />
+     <Compile Include="Assets\Scripts\TitleStartGame.cs" />
      <Compile Include="Assets\Scripts\Tool.cs" />
      <Compile Include="Assets\Scripts\Victim.cs" />
      <Compile Include="Assets\_Church_props\demo_scene\Sky FX Pack\Scripts\ScrollBehaviour.cs" />
