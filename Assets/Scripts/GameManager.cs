@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour {
 
 	GameObject heldObject;
 
+	public GameObject spellEffectPrefab;
+	public GameObject spellEffectLocation;
+	public List<GameObject> spellsToClean= new List<GameObject>();
+
 	public Text textUI;
 
 	// Use this for initialization
@@ -44,6 +48,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		//getting the currently held object from the MouseControl Script
 		//heldObject = GetComponent<MouseControl>().heldObject;
+
 	}
 
 	public void GenerateTools(){
@@ -100,8 +105,15 @@ public class GameManager : MonoBehaviour {
 
 			if(tool.treatmentDict.ContainsKey(afflictionState) && 
 				(tool.treatmentDict[afflictionState] == affliction)){
-				Debug.Log("these match");
 				//Give Feedback
+				GameObject newSpell = (GameObject)(Instantiate(spellEffectPrefab, spellEffectLocation.transform.position, spellEffectLocation.transform.rotation));
+				newSpell.GetComponent<Renderer>().sortingLayerName = "Particles";
+				Renderer[] spellRenderers = newSpell.GetComponentsInChildren<Renderer>();
+				for (int i = 0; i < spellRenderers.Length - 1; i++) {
+					spellRenderers [i].sortingLayerName = "Particle";
+				};
+				newSpell.SetActive (true);
+				spellsToClean.Add (newSpell);
 				//Get Dialogue
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
