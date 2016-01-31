@@ -125,30 +125,30 @@ public class DataStructures : MonoBehaviour {
 		possibleToolTypes = new List<ToolType> ();
 
 		ToolType candle = new ToolType ("Candle", candleObject, new Dictionary<int, Affliction> () {
-			{ 32, possessed },
+			{ 33, possessed },
 			{ 21, frozen },
-			{ 53, zombified }
+			{ 52, zombified }
 		});
 
 		ToolType magic = new ToolType ("Magic", magicObject, new Dictionary<int, Affliction> () {
-			{ 11, poison },
+			{ 12, poison },
 			{ 31, possessed },
 			{ 41, parasite }
 		});
 
 		ToolType potion = new ToolType ("Potion", potionObject, new Dictionary<int, Affliction> () {
-			{ 12, poison },
+			{ 11, poison },
 			{ 22, frozen },
 			{ 43, parasite }
 		});
 			
 		ToolType crowbar = new ToolType ("Crowbar", crowbarObject, new Dictionary<int, Affliction> () {
 			{ 42, parasite },
-			{ 52, zombified }
+			{ 53, zombified }
 		});
 
 		ToolType holySymbol = new ToolType ("Holy Symbol", holySymbolObject, new Dictionary<int, Affliction> () {
-			{33, possessed},
+			{32, possessed},
 			{51, zombified}
 		});
 			
@@ -173,6 +173,8 @@ public class DataStructures : MonoBehaviour {
 		// dialogue
 		possibleDialogueChoices = new List<Dialogue> ();
 		possibleStartingDialogueChoices = new List<StartingDialogue> ();
+
+		//UPDATE DIALOGUE BELOW HERE
 
 		//GOOD dialogue spoken by FRIEND during NONSPECIFIC treatment
 		Dialogue goodJob = new Dialogue (
@@ -282,7 +284,7 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ zombified }
 		); 
 
-		//GOOD dialogue spoken by FRIEND during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+		//GOOD dialogue spoken by FRIEND during treatment for POISON
         
         Dialogue antiDope = new Dialogue (
              "That antidote is dope!",
@@ -342,10 +344,17 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		); 
 
-		//BAD dialogue spoken by FRIEND during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+		//BAD dialogue spoken by FRIEND during treatment for POISON 
         
         Dialogue imSick = new Dialogue (
              "Even I'M starting to feel sick while watching you work.",
+             2,
+             1,
+             new List<Affliction> (){ poison }
+         );
+
+        Dialogue notTelevision = new Dialogue (
+             "This is definitely not what they do on TV.",
              2,
              1,
              new List<Affliction> (){ poison }
@@ -358,9 +367,17 @@ public class DataStructures : MonoBehaviour {
 			1,
 			new List<Affliction> (){ missingLimb }
 		); */
+
 		//BAD dialogue spoken by FRIEND during treatment for FROZEN
 		Dialogue worstSlushie = new Dialogue (
 			"Worst. Slushie. Ever.",
+			2,
+			1,
+			new List<Affliction> (){ frozen }
+		); 
+
+		Dialogue hairDryer = new Dialogue (
+			"Never mind, just give him back to me and I'll use a hair dryer or something.",
 			2,
 			1,
 			new List<Affliction> (){ frozen }
@@ -374,9 +391,23 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ possessed }
 		); 
 
+		Dialogue changedParty = new Dialogue (
+			"He's just not the person I asked to join my party. He's...changed.",
+			2,
+			1,
+			new List<Affliction> (){ possessed }
+		); 
+
 		//BAD dialogue spoken by FRIEND during treatment for PARASITE
 		Dialogue buggingBug = new Dialogue (
 			"That's doing literally nothing besides annoying it.",
+			2,
+			1,
+			new List<Affliction> (){ parasite }
+		); 
+
+		Dialogue betterWay = new Dialogue (
+			"There has to be a better way.",
 			2,
 			1,
 			new List<Affliction> (){ parasite }
@@ -388,8 +419,14 @@ public class DataStructures : MonoBehaviour {
 			2,
 			1,
 			new List<Affliction> (){ zombified }
-		); 
+		); 	
 
+		Dialogue hideCloset = new Dialogue (
+			"Never mind, I'll just hide him in a closet or something.",
+			2,
+			1,
+			new List<Affliction> (){ zombified }
+		); 
 
 		//GOOD dialogue spoken by PLAYER during NONSPECIFIC treatment
 		Dialogue goodTraining = new Dialogue (
@@ -414,7 +451,7 @@ public class DataStructures : MonoBehaviour {
 		);
 
 		Dialogue cashThanks = new Dialogue (
-			"I'll take my payment in cold hard cash, thanks.",
+			"I'll take my payment in cold hard GP, thanks.",
 			1,
 			3,
 			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
@@ -431,6 +468,20 @@ public class DataStructures : MonoBehaviour {
         
         Dialogue awesomeSnake = new Dialogue (
              "I'm so awesome, even snakes are afraid of me.",
+             1,
+             3,
+             new List<Affliction> (){ poison }
+         );
+
+        Dialogue remedyMe = new Dialogue (
+             "Looks like *I* am the remedy.",
+             1,
+             3,
+             new List<Affliction> (){ poison }
+         );
+
+        Dialogue pieceCake = new Dialogue (
+             "Piece of cake! Not poisoned cake, though.",
              1,
              3,
              new List<Affliction> (){ poison }
@@ -467,6 +518,27 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ frozen }
 		);
 
+		Dialogue mrFreeze = new Dialogue (
+			"Just call me Mr. UnFreeze.",
+			1,
+			3,
+			new List<Affliction> (){ frozen }
+		);
+
+		Dialogue walkingSunshine = new Dialogue (
+			"Soon this guy will be walking on sunshine.",
+			1,
+			3,
+			new List<Affliction> (){ frozen }
+		);
+
+		Dialogue hotHere = new Dialogue (
+			"It's getting hot in here.",
+			1,
+			3,
+			new List<Affliction> (){ frozen }
+		);		
+
 		//GOOD dialogue spoken by PLAYER during treatment of POSSESSED
 		Dialogue powerCompel = new Dialogue (
 			"The power of me compels you!",
@@ -490,9 +562,23 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ parasite }
 		);
 
+		Dialogue cripplingDebt = new Dialogue (
+			"Now if only I could shake off my crippling debt as easily.",
+			1,
+			3,
+			new List<Affliction> (){ parasite }
+		);
+
 		//GOOD dialogue spoken by PLAYER during treatment of ZOMBIFIED       
 		Dialogue geniusBrain = new Dialogue (
 			"I'm a genius! It must be because of my enormous, undigested brain.",
+			1,
+			3,
+			new List<Affliction> (){ zombified }
+		);
+
+		Dialogue brainCleric = new Dialogue (
+			"Brrrrrrains: The reason why I am good at being a cleric.",
 			1,
 			3,
 			new List<Affliction> (){ zombified }
@@ -513,12 +599,12 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
-		Dialogue stoveOn = new Dialogue (
+		/*Dialogue stoveOn = new Dialogue (
 			"(I wonder if I left the stove on? Wait, what was I doing again?)",
 			1,
 			1,
 			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
-		);
+		);*/
 
 		Dialogue clericalError = new Dialogue (
 			"Sorry, I made a clerical error.",
@@ -527,17 +613,24 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
-		Dialogue suchDebt = new Dialogue (
-			"(I have so much crushing debt.)",
+		Dialogue noNotice = new Dialogue (
+			"(Maybe no one will notice...)",
 			1,
 			1,
 			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
-		//BAD dialogue spoken by PLAYER during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+		//BAD dialogue spoken by PLAYER during treatment for POISON
         
         Dialogue oopsAspirin = new Dialogue (
              "Wait, I think this was just aspirin.",
+             1,
+             1,
+             new List<Affliction> (){ poison }
+         );
+
+        Dialogue waitEnough = new Dialogue (
+             "Maybe if we wait long enough, the poison will just go away.",
              1,
              1,
              new List<Affliction> (){ poison }
@@ -574,6 +667,13 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ frozen }
 		);   
 
+		Dialogue shakenStirred = new Dialogue (
+			"So, do you take your drinks shaken or stirred? Because this ice ain't go anywhere soon.",
+			1,
+			1,
+			new List<Affliction> (){ frozen }
+		); 
+
 		//BAD dialogue spoken by PLAYER during treatment for POSSESSED            
 		Dialogue goodPersonality = new Dialogue (
 			"I mean, maybe the demon has a good personality?",
@@ -581,6 +681,13 @@ public class DataStructures : MonoBehaviour {
 			1,
 			new List<Affliction> (){ possessed }
 		);    
+
+		Dialogue badMusic = new Dialogue (
+			"I have another idea: just play really annoying music and maybe the ghost will go away.",
+			1,
+			1,
+			new List<Affliction> (){ possessed }
+		);  
 
 		//BAD dialogue spoken by PLAYER during treatment for PARASITE            
 		Dialogue whereRipley = new Dialogue (
@@ -590,6 +697,20 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ parasite }
 		);                             
 
+		Dialogue ratherFashionable = new Dialogue (
+			"I think it's rather fashionable, don't you?",
+			1,
+			1,
+			new List<Affliction> (){ parasite }
+		); 
+
+		Dialogue shrimpTempura = new Dialogue (
+			"Are you sure it's not just a piece of shrimp tempura?",
+			1,
+			1,
+			new List<Affliction> (){ parasite }
+		); 		
+
 		//BAD dialogue spoken by PLAYER during treatment for ZOMBIFIED            
 		Dialogue headshotTime = new Dialogue (
 			"Maybe it's time for my secret ingredient: a headshot.",
@@ -598,82 +719,207 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ zombified }
 		);    
 
-		//UNSYMPATHETIC starting dialogue for FROZEN
-		StartingDialogue meanSquirtle = new StartingDialogue (
-			"I told him he shouldn’t tease Squirtles in the dead of winter, but no one ever listens to me.",
+		Dialogue zombieApocalypse = new Dialogue (
+			"Ooh, yikes. I hope I'm not unwittingly contributing to the zombie apocalypse.",
 			1,
-			new List<Affliction> (){ frozen }
-		);
-
-		StartingDialogue foxCoat = new StartingDialogue (
-			"He refused to wear his 100,000 GP coat because he claimed that fox fur is SO not on trend right now.",
-			1,
-			new List<Affliction> (){ frozen }
-		);
-
-		//UNSYMPATHETIC starting dialogue for POSSESSED
-		StartingDialogue oweMoney = new StartingDialogue (
-			"To be honest, I kind of prefer the demon over him. But he owes me money, so.",
-			1,
-			new List<Affliction> (){ possessed }
-		);
-
-		//UNSYMPATHETIC starting dialogue for PARASITE
-		StartingDialogue garbagePerson = new StartingDialogue (
-			"What do you expect from a garbage person like this guy?",
-			1,
-			new List<Affliction> (){ parasite }
-		);
-
-		//UNSYMPATHETIC starting dialogue for ZOMBIFIED
-		StartingDialogue graveyardFreak = new StartingDialogue (
-			"I told him to stop wandering around the graveyard and pushing on tombstones like a freak.",
 			1,
 			new List<Affliction> (){ zombified }
-		);
+		);    
 
-		//SYMPATHETIC starting dialogue for POISON
-
-		StartingDialogue lifeSaver = new StartingDialogue (
-			"Someone was trying to kill me! He saved my life!",
-			3,
-			new List<Affliction> (){ poison }
-		);
-
-
-		//SYMPATHETIC starting dialogue for FROZEN
-		StartingDialogue hugeShip = new StartingDialogue (
-			"It’s funny you should ask! This story has EVERYTHING...drama, romance, TRAGEDY! He met this girl and it was really romantic and wonderful. They were on this ship, but then disaster struck! Long story short, it started sinking, there was this tiny piece of wreckage that was actually PERFECTLY serviceable yadda yadda yadda you get the story.",
-			3,
-			new List<Affliction> (){ frozen }
-		);
-
-		StartingDialogue polarPlunge = new StartingDialogue (
-			"He was participating in the Snowpeak Polar Bear Plunge and I guess he plunged a little too long.",
-			3,
-			new List<Affliction> (){ frozen }
-		);        
-
-		//SYMPATHETIC starting dialogue for POSSESSED
-		StartingDialogue familyCurse = new StartingDialogue (
-			"It's not his fault he has a family curse. His grandma was a jerk to a necromancer one time or something.",
-			3,
-			new List<Affliction> (){ possessed }
-		);
-
-		//SYMPATHETIC starting dialogue for PARASITE
-		StartingDialogue badLandlord = new StartingDialogue (
-			"We've been telling the landlord for months about the infestation. It was only a matter of time before we got overrun. Btw, we're subletting if you're in the market...",
-			3,
-			new List<Affliction> (){ parasite }
-		);
-
-		//SYMPATHETIC starting dialogue for ZOMBIFIED
-		StartingDialogue twoPregnant = new StartingDialogue (
-			"He saved TWO pregnant ladies!",
-			3,
+		Dialogue checkUp = new Dialogue (
+			"Uh, just bring him in for a check-up. Like...28 days from now, maybe?",
+			1,
+			1,
 			new List<Affliction> (){ zombified }
-		);
+		);  		
+
+		//INITIAL DIALOGUE BELOW
+		/*UNSYMPATHETIC starting dialogue for MISSING LIMB
+		StartingDialogue testTest = new StartingDialogue (
+			                            "OMG, we ran into this totally rad dragon. Well, it was rad until it took a bite out of my friend. Oh, it ate some villagers too but who cares?",
+			                            1,
+			                            new List<Affliction> (){ missingLimb }
+		                            );*/
+		        //INITIAL DIALOGUE BELOW
+
+        /*//UNSYMPATHETIC starting dialogue for MISSING LIMB
+        StartingDialogue radDragon = new StartingDialogue (
+            "OMG, we ran into this totally rad dragon. Well, it was rad until it took a bite out of my friend. Oh, it ate some villagers too but who cares?",
+            1,
+            new List<Affliction> (){ missingLimb }
+            );
+
+        StartingDialogue noWrestle = new StartingDialogue (
+            "This is a disaster. He’s never lost at arm-wrestling before!",
+            1,
+            new List<Affliction> (){ missingLimb }
+            );*/
+
+	    //UNSYMPATHETIC starting dialogue for POISON
+
+        StartingDialogue drinkStealer = new StartingDialogue (
+            "Maybe some people here should stop going around taking other people's drinks.",
+            1,
+            new List<Affliction> (){ poison }
+            );
+
+        //UNSYMPATHETIC starting dialogue for FROZEN
+        StartingDialogue meanSquirtle = new StartingDialogue (
+            "I told him he shouldn’t tease Squirtles in the dead of winter, but no one ever listens to me.",
+            1,
+            new List<Affliction> (){ frozen }
+            );
+
+        StartingDialogue foxCoat = new StartingDialogue (
+            "He refused to wear his 100,000 GP coat because he claimed that fox fur is SO not on trend right now.",
+            1,
+            new List<Affliction> (){ frozen }
+            );
+
+        //UNSYMPATHETIC starting dialogue for POSSESSED
+        StartingDialogue oweMoney = new StartingDialogue (
+            "To be honest, I kind of prefer the demon over him. But he owes me money, so.",
+            1,
+            new List<Affliction> (){ possessed }
+            );
+
+        //UNSYMPATHETIC starting dialogue for PARASITE
+        StartingDialogue garbagePerson = new StartingDialogue (
+            "What do you expect from a garbage person like this guy?",
+            1,
+            new List<Affliction> (){ parasite }
+            );
+
+        //UNSYMPATHETIC starting dialogue for ZOMBIFIED
+        StartingDialogue graveyardFreak = new StartingDialogue (
+            "I told him to stop wandering around the graveyard and pushing on tombstones like a freak.",
+            1,
+            new List<Affliction> (){ zombified }
+            );
+
+
+        //SYMPATHETIC starting dialogue for POISON
+
+        StartingDialogue lifeSaver = new StartingDialogue (
+            "Someone was trying to kill me! He saved my life!",
+            3,
+            new List<Affliction> (){ poison }
+            );
+
+        //SYMPATHETIC starting dialogue for FROZEN
+        StartingDialogue hugeShip = new StartingDialogue (
+            "It’s funny you should ask! This story has EVERYTHING...drama, romance, TRAGEDY! He met this girl and it was really romantic and wonderful. They were on this ship, but then disaster struck! Long story short, it started sinking, there was this tiny piece of wreckage that was actually PERFECTLY serviceable yadda yadda yadda you get the story.",
+            3,
+            new List<Affliction> (){ frozen }
+            );
+
+        StartingDialogue polarPlunge = new StartingDialogue (
+            "He was participating in the Snowpeak Polar Bear Plunge and I guess he plunged a little too long.",
+            3,
+            new List<Affliction> (){ frozen }
+            );        
+
+        //SYMPATHETIC starting dialogue for POSSESSED
+        StartingDialogue familyCurse = new StartingDialogue (
+            "It's not his fault he has a family curse. His grandma was a jerk to a necromancer one time or something.",
+            3,
+            new List<Affliction> (){ possessed }
+            );
+
+        //SYMPATHETIC starting dialogue for PARASITE
+        StartingDialogue badLandlord = new StartingDialogue (
+            "We've been telling the landlord for months about the infestation. It was only a matter of time before we got overrun. Btw, we're subletting if you're in the market...",
+            3,
+            new List<Affliction> (){ parasite }
+            );
+
+        //SYMPATHETIC starting dialogue for ZOMBIFIED
+        StartingDialogue twoPregnant = new StartingDialogue (
+            "He saved TWO pregnant ladies!",
+            3,
+            new List<Affliction> (){ zombified }
+            );
+
+        StartingDialogue oldBroccoli = new StartingDialogue (
+            "One day, he just turned the color of old broccoli.",
+            3,
+            new List<Affliction> (){ zombified }
+            );
+
+        //RESPONSE DIALOGUE BELOW - Dialogue said by the PLAYER when you have/haven't applied the RELEASE FORM first
+        //RESPONSE DIALOGUE - NEGATIVE            
+        Dialogue forgettingSth = new Dialogue (
+               "I feel like I'm forgetting something.",
+               1,
+               1,
+               new List<Affliction> (){ possessed, frozen, parasite, zombified, poison }
+        );    
+
+        Dialogue paperworkSense = new Dialogue (
+               "My paperwork sense is tingling.",
+               1,
+               1,
+               new List<Affliction> (){ possessed, frozen, parasite, zombified, poison }
+        );  
+
+        Dialogue oneRule = new Dialogue (
+               "The number one rule of the Healer's Guild: Protect thyself from liability.",
+               1,
+               1,
+               new List<Affliction> (){ possessed, frozen, parasite, zombified, poison }
+        );  
+
+        Dialogue hangOn = new Dialogue (
+               "Whoa, hang on, something’s missing.",
+               1,
+               1,
+               new List<Affliction> (){ possessed, frozen, parasite, zombified, poison }
+        );  
+
+        Dialogue noExcitement = new Dialogue (
+               "Trying to contain my excitement.",
+               1,
+               1,
+               new List<Affliction> (){ possessed, frozen, parasite, zombified, poison }
+        );                  
+
+        Dialogue preCondition = new Dialogue (
+               "What if this is a pre-existing condition?",
+               1,
+               1,
+               new List<Affliction> (){ possessed, frozen, parasite, zombified, poison }
+        );  
+
+        //POSITIVE RESPONSE DIALOGUE BELOW
+
+        Dialogue yayPaperwork = new Dialogue (
+               "Oh good. You brought your release form. I love paperwork.",
+               1,
+               3,
+               new List<Affliction> (){ possessed, frozen, parasite, zombified, poison }
+        );         
+
+        Dialogue releaseGP = new Dialogue (
+               "Your release form releases me to do what I need to do to help your friend. It also releases GP from your pocket.",
+               1,
+               3,
+               new List<Affliction> (){ possessed, frozen, parasite, zombified, poison }
+        );         
+
+        Dialogue timeWork = new Dialogue (
+               "Time to get to work. It's a thing I do now.",
+               1,
+               3,
+               new List<Affliction> (){ possessed, frozen, parasite, zombified, poison }
+        );         
+
+        Dialogue trueGenius = new Dialogue (
+               "Now that the paperwork's out of the way, you can witness my true genius!",
+               1,
+               3,
+               new List<Affliction> (){ possessed, frozen, parasite, zombified, poison }
+        );         
+
 
 	}
 }
