@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour {
 
 	GameObject heldObject;
 
+	public GameObject spellEffectPrefab;
+	public GameObject spellEffectLocation;
+	public List<GameObject> spellsToClean= new List<GameObject>();
+
 	public Text textUI;
 
 	// Use this for initialization
@@ -26,7 +30,7 @@ public class GameManager : MonoBehaviour {
 		 
 		SpawnVictim();
 		//make sure there is a valid adventurer on the altar
-		/*if (adventurer.tag == "Adventurer"){
+		if (adventurer.tag == "Adventurer"){
 			//Debug.Log("You have an adventurer on the altar");
 			//if (adventurer.
 			foreach (Transform child in adventurer.transform){
@@ -34,7 +38,7 @@ public class GameManager : MonoBehaviour {
 					interactionPlane = child;
 				}
 			}
-		}*/
+		}
 			
 	}
 
@@ -43,10 +47,6 @@ public class GameManager : MonoBehaviour {
 		//getting the currently held object from the MouseControl Script
 		//heldObject = GetComponent<MouseControl>().heldObject;
 
-		//restart Level
-		if(Input.GetKeyDown(KeyCode.R)){
-			Application.LoadLevel(0);
-		}
 	}
 
 	void SpawnVictim(){
@@ -111,14 +111,28 @@ public class GameManager : MonoBehaviour {
 
 			if(tool.treatmentDict.ContainsKey(afflictionState) && 
 				(tool.treatmentDict[afflictionState] == affliction)){
-				Debug.Log("these match");
+
 				//Give Feedback
+				GameObject newSpell = (GameObject)(Instantiate(spellEffectPrefab, spellEffectLocation.transform.position, spellEffectLocation.transform.rotation));
+				newSpell.GetComponent<Renderer>().sortingLayerName = "Particles";
+				Renderer[] spellRenderers = newSpell.GetComponentsInChildren<Renderer>();
+				for (int i = 0; i < spellRenderers.Length - 1; i++) {
+					spellRenderers [i].sortingLayerName = "Particle";
+				};
+				newSpell.SetActive (true);
+				spellsToClean.Add (newSpell);
+
 				//Get Dialogue
+<<<<<<< HEAD
 				//1 bad, 2 neutral, 3 good
 				//speech = gameObject.GetComponent<DataStructures>().getDialogue(3, affliction);
 				//textUI.text = speech.text;
+=======
+
+>>>>>>> 579dd9e8e818c3bb040f0d07af2bd21e6346c94a
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
+
 				//check endstate
 				if(trigger.GetComponent<Victim>().treatmentState ==
 					trigger.GetComponent<Victim>().affliction.endState){
@@ -128,6 +142,7 @@ public class GameManager : MonoBehaviour {
 					Destroy(trigger);
 					SpawnVictim();
 				}
+
 				//removed used tools
 				collider.SetActive(false);
 
