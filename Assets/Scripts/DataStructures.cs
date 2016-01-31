@@ -125,14 +125,14 @@ public class DataStructures : MonoBehaviour {
 		possibleToolTypes = new List<ToolType> ();
 
 		ToolType candle = new ToolType ("Candle", candleObject, new Dictionary<int, Affliction> () {
-			{ 33, possessed },
+			{ 31, possessed },
 			{ 21, frozen },
-			{ 52, zombified }
+			{ 51, zombified }
 		});
 
 		ToolType magic = new ToolType ("Magic", magicObject, new Dictionary<int, Affliction> () {
 			{ 12, poison },
-			{ 31, possessed },
+			{ 33, possessed },
 			{ 41, parasite }
 		});
 
@@ -144,12 +144,12 @@ public class DataStructures : MonoBehaviour {
 			
 		ToolType crowbar = new ToolType ("Crowbar", crowbarObject, new Dictionary<int, Affliction> () {
 			{ 42, parasite },
-			{ 53, zombified }
+			{ 52, zombified }
 		});
 
 		ToolType holySymbol = new ToolType ("Holy Symbol", holySymbolObject, new Dictionary<int, Affliction> () {
 			{32, possessed},
-			{51, zombified}
+			{53, zombified}
 		});
 			
 
@@ -176,7 +176,7 @@ public class DataStructures : MonoBehaviour {
 
 		//UPDATE DIALOGUE BELOW HERE
 
-		//GOOD dialogue spoken by FRIEND during NONSPECIFIC treatment
+				//GOOD dialogue spoken by FRIEND during NONSPECIFIC treatment
 		Dialogue goodJob = new Dialogue (
 			"Wow! Good as new! Almost.",
 			2,
@@ -212,46 +212,17 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
-		/*GOOD dialogue spoken by FRIEND during treatment for MISSING LIMB
-		Dialogue ikeaFurniture = new Dialogue (
-			"You did a much better job than I did with my IKEA furniture.",
-			2,
-			3,
-			new List<Affliction> (){ missingLimb }
-		);
-
-		Dialogue noLimericks = new Dialogue (
-			"Looks like I'll have to throw out all my limericks. 'I once knew a one-armed man from Nantucket...'",
-			2,
-			3,
-			new List<Affliction> (){ missingLimb }
-		);
-
-		Dialogue bestHandshake = new Dialogue (
-			"A good, firm handshake is so important for making the best first impression.",
-			2,
-			3,
-			new List<Affliction> (){ missingLimb }
-		);        
-
-		Dialogue armWrestling = new Dialogue (
-			"Looks like he'll be up and arm-wrestling in no time. That's very important to him, you know.",
-			2,
-			3,
-			new List<Affliction> (){ missingLimb }
-		);  
-
-		Dialogue notTelevision = new Dialogue (
-			"They make it look so hard on TV, but I guess it's just a 'tab A in slot B' kind of thing, huh?",
-			2,
-			3,
-			new List<Affliction> (){ missingLimb }
-		); */
-
 		//GOOD dialogue spoken by FRIEND during treatment for FROZEN
 
 		Dialogue getWarmer = new Dialogue (
 			"Getting warmer!",
+			2,
+			3,
+			new List<Affliction> (){ frozen }
+		); 
+
+		Dialogue mmToasty = new Dialogue (
+			"Mmm...toasty!",
 			2,
 			3,
 			new List<Affliction> (){ frozen }
@@ -266,10 +237,24 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ possessed }
 		);         
 
+		Dialogue totallyThanks = new Dialogue (
+			"My friend would totally thank you right now. If he didn't have his uh condition, of course.",
+			2,
+			3,
+			new List<Affliction> (){ possessed }
+		);         
+
 		//GOOD dialogue spoken by FRIEND during treatment for PARASITE
 
 		Dialogue breakUp = new Dialogue (
 			"One step closer to ending an unhealthy co-dependent relationship.",
+			2,
+			3,
+			new List<Affliction> (){ parasite }
+		);  
+
+		Dialogue hoseOff = new Dialogue (
+			"This is way better than the last thing I tried, which was just to hose him off.",
 			2,
 			3,
 			new List<Affliction> (){ parasite }
@@ -284,10 +269,24 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ zombified }
 		); 
 
+		Dialogue easyGreen = new Dialogue (
+			"Almost there! Good thing, too. It ain't easy being green!",
+			2,
+			3,
+			new List<Affliction> (){ zombified }
+		); 
+
 		//GOOD dialogue spoken by FRIEND during treatment for POISON
         
         Dialogue antiDope = new Dialogue (
              "That antidote is dope!",
+             2,
+             3,
+             new List<Affliction> (){ poison }
+         );
+
+        Dialogue noPurple = new Dialogue (
+             "Hurray, you de-purpled him!",
              2,
              3,
              new List<Affliction> (){ poison }
@@ -359,14 +358,6 @@ public class DataStructures : MonoBehaviour {
              1,
              new List<Affliction> (){ poison }
          );
-
-		/*BAD dialogue spoken by FRIEND during treatment for MISSING LIMB
-		Dialogue goodArm = new Dialogue (
-			"Be careful with that thing -- that's his good arm!",
-			2,
-			1,
-			new List<Affliction> (){ missingLimb }
-		); */
 
 		//BAD dialogue spoken by FRIEND during treatment for FROZEN
 		Dialogue worstSlushie = new Dialogue (
@@ -487,29 +478,6 @@ public class DataStructures : MonoBehaviour {
              new List<Affliction> (){ poison }
          );
 
-		/*GOOD dialogue spoken by PLAYER during treatment for MISSING LIMB
-
-		Dialogue easyPuzzle = new Dialogue (
-			"Easier than one of those 1,000-piece puzzles.",
-			1,
-			3,
-			new List<Affliction> (){ missingLimb }
-		);
-
-		Dialogue itsAlive = new Dialogue (
-			"It's alive! It's aliiiiiive!",
-			1,
-			3,
-			new List<Affliction> (){ missingLimb }
-		);
-
-		Dialogue haveTechnology = new Dialogue (
-			"We can rebuild him! We have the technology!",
-			1,
-			3,
-			new List<Affliction> (){ missingLimb }
-		);*/
-
 		//GOOD dialogue spoken by PLAYER during treatment of FROZEN
 		Dialogue hotStreak = new Dialogue (
 			"I'm on a hot streak.",
@@ -584,6 +552,20 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ zombified }
 		);
 
+		Dialogue donDead = new Dialogue (
+			"I dub thee...'Don of the Dead.'",
+			1,
+			3,
+			new List<Affliction> (){ zombified }
+		);		
+
+		Dialogue tobeZombie = new Dialogue (
+			"To be or zombie? I choose c) to not be zombie.",
+			1,
+			3,
+			new List<Affliction> (){ zombified }
+		);
+
 		//BAD dialogue spoken by PLAYER during NONSPECIFIC treatment
 		Dialogue stillPaid = new Dialogue (
 			"(I hope I still get paid.)",
@@ -598,13 +580,6 @@ public class DataStructures : MonoBehaviour {
 			1,
 			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
-
-		/*Dialogue stoveOn = new Dialogue (
-			"(I wonder if I left the stove on? Wait, what was I doing again?)",
-			1,
-			1,
-			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
-		);*/
 
 		Dialogue clericalError = new Dialogue (
 			"Sorry, I made a clerical error.",
@@ -636,29 +611,6 @@ public class DataStructures : MonoBehaviour {
              new List<Affliction> (){ poison }
          );
 
-		/*BAD dialogue spoken by PLAYER during treatment for MISSING LIMB
-
-		Dialogue noNeed = new Dialogue (
-			"Well...they didn’t need that anyway.",
-			1,
-			1,
-			new List<Affliction> (){ missingLimb }
-		);
-
-		Dialogue whyLeftover = new Dialogue (
-			"Wait, why's there this leftover piece?",
-			1,
-			1,
-			new List<Affliction> (){ missingLimb }
-		);
-
-		Dialogue lostFound = new Dialogue (
-			"I guess I'll send this to the Lost and Found.",
-			1,
-			1,
-			new List<Affliction> (){ missingLimb }
-		);*/
-
 		//BAD dialogue spoken by PLAYER during treatment for FROZEN            
 		Dialogue letGo = new Dialogue (
 			"Let's just...let it go.",
@@ -669,6 +621,20 @@ public class DataStructures : MonoBehaviour {
 
 		Dialogue shakenStirred = new Dialogue (
 			"So, do you take your drinks shaken or stirred? Because this ice ain't go anywhere soon.",
+			1,
+			1,
+			new List<Affliction> (){ frozen }
+		); 
+
+		Dialogue noIce = new Dialogue (
+			"I guess I shouldn't recommend putting it on ice.",
+			1,
+			1,
+			new List<Affliction> (){ frozen }
+		); 
+
+		Dialogue frozenPeas = new Dialogue (
+			"That was about as effective as a bag of frozen peas.",
 			1,
 			1,
 			new List<Affliction> (){ frozen }
@@ -733,28 +699,7 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ zombified }
 		);  		
 
-		//INITIAL DIALOGUE BELOW
-		/*UNSYMPATHETIC starting dialogue for MISSING LIMB
-		StartingDialogue testTest = new StartingDialogue (
-			                            "OMG, we ran into this totally rad dragon. Well, it was rad until it took a bite out of my friend. Oh, it ate some villagers too but who cares?",
-			                            1,
-			                            new List<Affliction> (){ missingLimb }
-		                            );*/
-		        //INITIAL DIALOGUE BELOW
-
-        /*//UNSYMPATHETIC starting dialogue for MISSING LIMB
-        StartingDialogue radDragon = new StartingDialogue (
-            "OMG, we ran into this totally rad dragon. Well, it was rad until it took a bite out of my friend. Oh, it ate some villagers too but who cares?",
-            1,
-            new List<Affliction> (){ missingLimb }
-            );
-
-        StartingDialogue noWrestle = new StartingDialogue (
-            "This is a disaster. He’s never lost at arm-wrestling before!",
-            1,
-            new List<Affliction> (){ missingLimb }
-            );*/
-
+		//STARTING DIALOGUE BELOW
 	    //UNSYMPATHETIC starting dialogue for POISON
 
         StartingDialogue drinkStealer = new StartingDialogue (
@@ -762,6 +707,18 @@ public class DataStructures : MonoBehaviour {
             1,
             new List<Affliction> (){ poison }
             );
+
+        StartingDialogue milkExpire = new StartingDialogue (
+            "We didn't realize the milk was past the expiration date.",
+            1,
+            new List<Affliction> (){ poison }
+            );        
+
+        StartingDialogue nightShade = new StartingDialogue (
+            "Who knew eating something called 'deadly nightshade' could be dangerous?",
+            1,
+            new List<Affliction> (){ poison }
+            ); 
 
         //UNSYMPATHETIC starting dialogue for FROZEN
         StartingDialogue meanSquirtle = new StartingDialogue (
@@ -776,16 +733,46 @@ public class DataStructures : MonoBehaviour {
             new List<Affliction> (){ frozen }
             );
 
+        StartingDialogue brainFreeze = new StartingDialogue (
+            "I think it might just be brain freeze.",
+            1,
+            new List<Affliction> (){ frozen }
+            );        
+
+        StartingDialogue deathPeak = new StartingDialogue (
+            "We went up Death Peak to admire the view. It was pretty romantic until the frostbite set in.",
+            1,
+            new List<Affliction> (){ frozen }
+            );
+
         //UNSYMPATHETIC starting dialogue for POSSESSED
         StartingDialogue oweMoney = new StartingDialogue (
-            "To be honest, I kind of prefer the demon over him. But he owes me money, so.",
+            "To be honest, I kind of prefer the ghost over him. But he owes me money, so.",
             1,
             new List<Affliction> (){ possessed }
             );
 
+        StartingDialogue latinClass = new StartingDialogue (
+            "I just thought he'd started taken Latin classes.",
+            1,
+            new List<Affliction> (){ possessed }
+            );        
+
         //UNSYMPATHETIC starting dialogue for PARASITE
         StartingDialogue garbagePerson = new StartingDialogue (
             "What do you expect from a garbage person like this guy?",
+            1,
+            new List<Affliction> (){ parasite }
+            );
+
+        StartingDialogue isContagious = new StartingDialogue (
+            "More importantly, though -- is this contagious, doc?",
+            1,
+            new List<Affliction> (){ parasite }
+            );
+
+        StartingDialogue notBedbugs = new StartingDialogue (
+            "At least we didn't get bedbugs.",
             1,
             new List<Affliction> (){ parasite }
             );
@@ -797,18 +784,35 @@ public class DataStructures : MonoBehaviour {
             new List<Affliction> (){ zombified }
             );
 
+        StartingDialogue greenPaint = new StartingDialogue (
+            "ZOMBIE? You mean it's not just green paint?",
+            1,
+            new List<Affliction> (){ zombified }
+            );
+
+        StartingDialogue thoughtGrain = new StartingDialogue (
+            "I thought he was saying 'Graaaaains.' We just went vegan, you know.",
+            1,
+            new List<Affliction> (){ zombified }
+            );
+
+        StartingDialogue oldBroccoli = new StartingDialogue (
+            "One day, he just turned the color of old broccoli.",
+            1,
+            new List<Affliction> (){ zombified }
+            );
 
         //SYMPATHETIC starting dialogue for POISON
 
         StartingDialogue lifeSaver = new StartingDialogue (
-            "Someone was trying to kill me! He saved my life!",
+            "Someone was trying to kill me! He saved my life! Who knew a pork chop could be so important?",
             3,
             new List<Affliction> (){ poison }
             );
 
         //SYMPATHETIC starting dialogue for FROZEN
         StartingDialogue hugeShip = new StartingDialogue (
-            "It’s funny you should ask! This story has EVERYTHING...drama, romance, TRAGEDY! He met this girl and it was really romantic and wonderful. They were on this ship, but then disaster struck! Long story short, it started sinking, there was this tiny piece of wreckage that was actually PERFECTLY serviceable yadda yadda yadda you get the story.",
+            "He met this girl and they were in love but long story short, the ship they were on sank, there was this tiny piece of wreckage that was actually PERFECTLY serviceable yadda yadda yadda you get the story.",
             3,
             new List<Affliction> (){ frozen }
             );
@@ -836,12 +840,6 @@ public class DataStructures : MonoBehaviour {
         //SYMPATHETIC starting dialogue for ZOMBIFIED
         StartingDialogue twoPregnant = new StartingDialogue (
             "He saved TWO pregnant ladies!",
-            3,
-            new List<Affliction> (){ zombified }
-            );
-
-        StartingDialogue oldBroccoli = new StartingDialogue (
-            "One day, he just turned the color of old broccoli.",
             3,
             new List<Affliction> (){ zombified }
             );
