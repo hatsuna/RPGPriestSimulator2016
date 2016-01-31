@@ -94,7 +94,7 @@ public class DataStructures : MonoBehaviour {
 		// Afflictions
 		possibleAfflictions = new List<Affliction> ();
 
-		Affliction missingLimb = new Affliction ("Missing Limb", 3);
+		Affliction poison = new Affliction ("Poison", 3);
 		Affliction frozen = new Affliction ("Frozen", 3);
 		Affliction possessed = new Affliction ("Possessed", 4);
 		Affliction parasite = new Affliction ("Parasite", 4);
@@ -110,28 +110,30 @@ public class DataStructures : MonoBehaviour {
 
 		ToolType candle = new ToolType ("Candle", candleObject, new Dictionary<int, Affliction> () {
 			{ 32, possessed },
-			{ 21, frozen }
+			{ 21, frozen },
+			{ 53, zombified }
 		});
 
 		ToolType magic = new ToolType ("Magic", magicObject, new Dictionary<int, Affliction> () {
+			{ 11, poison },
 			{ 31, possessed },
-			{ 53, zombified },
 			{ 41, parasite }
 		});
 
 		ToolType potion = new ToolType ("Potion", potionObject, new Dictionary<int, Affliction> () {
-			{ 12, missingLimb },
+			{ 12, poison },
 			{ 22, frozen },
 			{ 43, parasite }
 		});
 			
 		ToolType crowbar = new ToolType ("Crowbar", crowbarObject, new Dictionary<int, Affliction> () {
-			{ 42, parasite }
+			{ 42, parasite },
+			{ 52, zombified }
 		});
 
 		ToolType holySymbol = new ToolType ("Holy Symbol", holySymbolObject, new Dictionary<int, Affliction> () {
-			{23, possessed},
-			{51, possessed}
+			{33, possessed},
+			{51, zombified}
 		});
 			
 
@@ -139,7 +141,7 @@ public class DataStructures : MonoBehaviour {
 			{ 30, possessed },
 			{ 20, frozen },
 			{ 40, parasite },
-			{ 10, missingLimb },
+			{ 10, poison },
 			{ 50, zombified }
 		});
 			
@@ -160,38 +162,38 @@ public class DataStructures : MonoBehaviour {
 			"Wow! Good as new! Almost.",
 			2,
 			3,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue scarMuch = new Dialogue(
 			"Looks like it won't scar...much.",
 			2,
 			3,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue miracleWorker = new Dialogue (
 			"You're a miracle worker! A minor miracle worker! You did a good job.",
 			2,
 			3,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue likeMagic = new Dialogue (
 			"It's like magic! Well, I guess it IS magic.",
 			2,
 			3,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue fiveStar = new Dialogue (
 			"I'm definitely giving you 5 out of 5 stars.",
 			2,
 			3,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
-		//GOOD dialogue spoken by FRIEND during treatment for MISSING LIMB
+		/*GOOD dialogue spoken by FRIEND during treatment for MISSING LIMB
 		Dialogue ikeaFurniture = new Dialogue (
 			"You did a much better job than I did with my IKEA furniture.",
 			2,
@@ -225,7 +227,7 @@ public class DataStructures : MonoBehaviour {
 			2,
 			3,
 			new List<Affliction> (){ missingLimb }
-		); 
+		); */
 
 		//GOOD dialogue spoken by FRIEND during treatment for FROZEN
 
@@ -263,14 +265,14 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ zombified }
 		); 
 
-		/*GOOD dialogue spoken by FRIEND during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+		//GOOD dialogue spoken by FRIEND during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
         
         Dialogue antiDope = new Dialogue (
              "That antidote is dope!",
              2,
              3,
              new List<Affliction> (){ poison }
-         ); */
+         );
 
 		//BAD dialogue spoken by FRIEND during NONSPECIFIC treatment
 
@@ -278,67 +280,67 @@ public class DataStructures : MonoBehaviour {
 			"Uh...are you sure that goes there?",
 			2,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue makeWorse = new Dialogue (
 			"I think you're making it worse.",
 			2,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);        
 
 		Dialogue doRefunds = new Dialogue (
 			"Do you do refunds?",
 			2,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);  
 
 		Dialogue innRec = new Dialogue (
 			"I should've known better than to take doctor recommendations from that guy at the inn.",
 			2,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		); 
 
 		Dialogue badFeeling = new Dialogue (
 			"I've got a bad feeling about this.",
 			2,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);  
 
 		Dialogue useForce = new Dialogue (
 			"Maybe you should try using the Force.",
 			2,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		); 
 
 		Dialogue seeLicense = new Dialogue (
 			"Can I see your license again?",
 			2,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		); 
 
-		/*BAD dialogue spoken by FRIEND during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+		//BAD dialogue spoken by FRIEND during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
         
         Dialogue imSick = new Dialogue (
              "Even I'M starting to feel sick while watching you work.",
              2,
              1,
              new List<Affliction> (){ poison }
-         ); */
+         );
 
-		//BAD dialogue spoken by FRIEND during treatment for MISSING LIMB
+		/*BAD dialogue spoken by FRIEND during treatment for MISSING LIMB
 		Dialogue goodArm = new Dialogue (
 			"Be careful with that thing -- that's his good arm!",
 			2,
 			1,
 			new List<Affliction> (){ missingLimb }
-		); 
+		); */
 		//BAD dialogue spoken by FRIEND during treatment for FROZEN
 		Dialogue worstSlushie = new Dialogue (
 			"Worst. Slushie. Ever.",
@@ -377,47 +379,47 @@ public class DataStructures : MonoBehaviour {
 			"Looks like all my training paid off. All 234,000 GP of it.",
 			1,
 			3,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue notNoob = new Dialogue (
 			"Don't worry, I've totally done this before.",
 			1,
 			3,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue blueShield = new Dialogue (
 			"It's dangerous to go alone. Take this Blue Shield Wellcare Plus plan...it's only 1,000 GP!",
 			1,
 			3,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue cashThanks = new Dialogue (
 			"I'll take my payment in cold hard cash, thanks.",
 			1,
 			3,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue lookMa = new Dialogue (
 			"Look, Ma! No hands!",
 			1,
 			3,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
-		/*GOOD dialogue spoken by PLAYER during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+		//GOOD dialogue spoken by PLAYER during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
         
         Dialogue awesomeSnake = new Dialogue (
              "I'm so awesome, even snakes are afraid of me.",
              1,
              3,
              new List<Affliction> (){ poison }
-         ); */
+         );
 
-		//GOOD dialogue spoken by PLAYER during treatment for MISSING LIMB
+		/*GOOD dialogue spoken by PLAYER during treatment for MISSING LIMB
 
 		Dialogue easyPuzzle = new Dialogue (
 			"Easier than one of those 1,000-piece puzzles.",
@@ -438,7 +440,7 @@ public class DataStructures : MonoBehaviour {
 			1,
 			3,
 			new List<Affliction> (){ missingLimb }
-		);
+		);*/
 
 		//GOOD dialogue spoken by PLAYER during treatment of FROZEN
 		Dialogue hotStreak = new Dialogue (
@@ -484,47 +486,47 @@ public class DataStructures : MonoBehaviour {
 			"(I hope I still get paid.)",
 			1,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue waitLevel = new Dialogue (
 			"(Maybe I should have waited until I leveled up.)",
 			1,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue stoveOn = new Dialogue (
 			"(I wonder if I left the stove on? Wait, what was I doing again?)",
 			1,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue clericalError = new Dialogue (
 			"Sorry, I made a clerical error.",
 			1,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
 		Dialogue suchDebt = new Dialogue (
 			"(I have so much crushing debt.)",
 			1,
 			1,
-			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+			new List<Affliction> (){ possessed, frozen, parasite, poison, zombified }
 		);
 
-		/*BAD dialogue spoken by PLAYER during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+		//BAD dialogue spoken by PLAYER during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
         
         Dialogue oopsAspirin = new Dialogue (
              "Wait, I think this was just aspirin.",
              1,
              1,
              new List<Affliction> (){ poison }
-         ); */
+         );
 
-		//BAD dialogue spoken by PLAYER during treatment for MISSING LIMB
+		/*BAD dialogue spoken by PLAYER during treatment for MISSING LIMB
 
 		Dialogue noNeed = new Dialogue (
 			"Well...they didn’t need that anyway.",
@@ -545,7 +547,7 @@ public class DataStructures : MonoBehaviour {
 			1,
 			1,
 			new List<Affliction> (){ missingLimb }
-		);
+		);*/
 
 		//BAD dialogue spoken by PLAYER during treatment for FROZEN            
 		Dialogue letGo = new Dialogue (
@@ -580,12 +582,12 @@ public class DataStructures : MonoBehaviour {
 		);    
 
 		//INITIAL DIALOGUE BELOW
-		//UNSYMPATHETIC starting dialogue for MISSING LIMB
+		/*UNSYMPATHETIC starting dialogue for MISSING LIMB
 		StartingDialogue testTest = new StartingDialogue (
 			                            "OMG, we ran into this totally rad dragon. Well, it was rad until it took a bite out of my friend. Oh, it ate some villagers too but who cares?",
 			                            1,
 			                            new List<Affliction> (){ missingLimb }
-		                            );
+		                            );*/
 
 
 	}
