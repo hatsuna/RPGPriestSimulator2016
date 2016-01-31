@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
+	public bool gameStarted;
+
 	//public GameObject adventurer;
 	Transform interactionPlane;
 	public GameObject victimPrefab;
@@ -34,15 +36,26 @@ public class GameManager : MonoBehaviour {
 	public AudioSource audioGood;
 	public AudioSource audioBad;
 
+	// Scoring mechanics
 	public int curedLinks = 0;
+	public float timeRemaining = 120;
+	public int cureChain = 0;
 
-	public int timeRemaining = 120;
+	public Text timeRemainingText;
+	public Text curedLinksText;
+	public Text cureChainText;
+
 
 	public GameObject bloodParticles;
 	GameObject bloodSpray;
 
 	// Use this for initialization
 	void Start () {
+
+		gameStarted = false;
+
+		cureChain = 0;
+		curedLinks = 0;
 		//SpawnVictim();
 		/*make sure there is a valid adventurer on the altar
 		if (adventurer.tag == "Adventurer"){
@@ -55,13 +68,24 @@ public class GameManager : MonoBehaviour {
 			}
 		}*/
 
-		bloodSpray = (GameObject)(Instantiate(bloodParticles, victimLocation.transform.position, victimLocation.transform.rotation));
+		bloodSpray = (GameObject)(Instantiate (bloodParticles, new Vector3(victimLocation.transform.position.x, victimLocation.transform.position.y, victimLocation.transform.position.z - 0.5f), Quaternion.identity));
+		bloodSpray.GetComponent<Renderer> ().sortingLayerName = "Particles";
 		bloodSpray.SetActive(false);
 			
 	}
 
 		// Update is called once per frame
 	void Update () {
+		if (gameStarted) {
+			timeRemaining -= Time.deltaTime;
+			timeRemainingText.text = "Time Remaining: " + (int)timeRemaining;
+			curedLinksText.text = "Cured Links: " + curedLinks;
+			cureChainText.text = "Cure Chain: " + cureChain;
+		}
+		if (timeRemaining <= 0) {
+			gameStarted = false;
+			timeRemainingText.text = "Game Over!  Press R to restart!";
+		}
 		//getting the currently held object from the MouseControl Script
 		//heldObject = GetComponent<MouseControl>().heldObject;
 
@@ -75,6 +99,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void SpawnVictim(){
+
+		gameStarted = true;
 
 		DialogueManager dialogueManager = HuDCanvas.GetComponent<DialogueManager>();
 
@@ -179,6 +205,11 @@ public class GameManager : MonoBehaviour {
 					dialogueManager.UpdateDialogueLeft ();
 				}
 
+				// Advance cure chain
+				if (gameStarted) {
+					cureChain += 1;
+				}
+
 
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
@@ -199,14 +230,16 @@ public class GameManager : MonoBehaviour {
 					
 
 				//check endstate
-				if(trigger.GetComponent<Victim>().treatmentState ==
-					trigger.GetComponent<Victim>().affliction.endState){
-					trigger.GetComponent<Renderer>().material.color = Color.clear;
-					Debug.Log("I'm Cured!");
+				if (trigger.GetComponent<Victim> ().treatmentState ==
+				   trigger.GetComponent<Victim> ().affliction.endState) {
+					trigger.GetComponent<Renderer> ().material.color = Color.clear;
+					Debug.Log ("I'm Cured!");
 					// Give Karma
 					KarmaScore += 40;
-					KarmaScoreObject.GetComponent<Text> ().text = KarmaScore.ToString();
-					curedLinks += 1;
+					KarmaScoreObject.GetComponent<Text> ().text = KarmaScore.ToString ();
+					if (gameStarted){
+						curedLinks += 1;
+					}
 					GenerateTools();
 					Destroy(trigger);
 					SpawnVictim();
@@ -232,6 +265,11 @@ public class GameManager : MonoBehaviour {
 					dialogueManager.UpdateDialogueLeft ();
 				}
 				bloodSpray.SetActive(true);
+
+				// Reset cure chain
+				if (gameStarted) {
+					cureChain = 0;
+				}
 
 				// Play Error Sound
 				audioBad.Play();
