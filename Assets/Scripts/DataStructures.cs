@@ -152,344 +152,441 @@ public class DataStructures : MonoBehaviour {
 		gameObject.GetComponent<GameManager> ().GenerateTools ();
 
 
-		//Dialogue
+		// dialogue
 		possibleDialogueChoices = new List<Dialogue> ();
 
 		//GOOD dialogue spoken by FRIEND during NONSPECIFIC treatment
 		Dialogue goodJob = new Dialogue (
-               "Wow! Good as new! Almost.",
-               2,
-               3,
-               new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
-           );
+			"Wow! Good as new! Almost.",
+			2,
+			3,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
 
 		Dialogue scarMuch = new Dialogue(
-				"Looks like it won't scar...much.",
-				2,
-				3,
-				new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
-			);
+			"Looks like it won't scar...much.",
+			2,
+			3,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
 
 		Dialogue miracleWorker = new Dialogue (
-             "You're a miracle worker! A minor miracle worker! You did a good job.",
-             2,
-             3,
-             new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
-         );
+			"You're a miracle worker! A minor miracle worker! You did a good job.",
+			2,
+			3,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
 
 		Dialogue likeMagic = new Dialogue (
-             "It's like magic! Well, I guess it IS magic.",
-             2,
-             3,
-             new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
-         );
+			"It's like magic! Well, I guess it IS magic.",
+			2,
+			3,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
 
 		Dialogue fiveStar = new Dialogue (
-			                    "I'm definitely giving you 5 out of 5 stars.",
-			                    2,
-			                    3,
-			                    new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
-		                    );
+			"I'm definitely giving you 5 out of 5 stars.",
+			2,
+			3,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
+
+		//GOOD dialogue spoken by FRIEND during treatment for MISSING LIMB
+		Dialogue ikeaFurniture = new Dialogue (
+			"You did a much better job than I did with my IKEA furniture.",
+			2,
+			3,
+			new List<Affliction> (){ missingLimb }
+		);
+
+		Dialogue noLimericks = new Dialogue (
+			"Looks like I'll have to throw out all my limericks. 'I once knew a one-armed man from Nantucket...'",
+			2,
+			3,
+			new List<Affliction> (){ missingLimb }
+		);
+
+		Dialogue bestHandshake = new Dialogue (
+			"A good, firm handshake is so important for making the best first impression.",
+			2,
+			3,
+			new List<Affliction> (){ missingLimb }
+		);        
+
+		Dialogue armWrestling = new Dialogue (
+			"Looks like he'll be up and arm-wrestling in no time. That's very important to him, you know.",
+			2,
+			3,
+			new List<Affliction> (){ missingLimb }
+		);  
+
+		Dialogue notTelevision = new Dialogue (
+			"They make it look so hard on TV, but I guess it's just a 'tab A in slot B' kind of thing, huh?",
+			2,
+			3,
+			new List<Affliction> (){ missingLimb }
+		); 
+
+		//GOOD dialogue spoken by FRIEND during treatment for FROZEN
+
+		Dialogue getWarmer = new Dialogue (
+			"Getting warmer!",
+			2,
+			3,
+			new List<Affliction> (){ frozen }
+		); 
+
+		//GOOD dialogue spoken by FRIEND during treatment for POSSESSED
+
+		Dialogue byeBub = new Dialogue (
+			"Bye bye, Beezlebub!",
+			2,
+			3,
+			new List<Affliction> (){ possessed }
+		);         
+
+		//GOOD dialogue spoken by FRIEND during treatment for PARASITE
+
+		Dialogue breakUp = new Dialogue (
+			"One step closer to ending an unhealthy co-dependent relationship.",
+			2,
+			3,
+			new List<Affliction> (){ parasite }
+		);  
+
+		//GOOD dialogue spoken by FRIEND during treatment for ZOMBIFIED
+
+		Dialogue brainsBrawn = new Dialogue (
+			"Can't wait to get my friend back. He was really the brains of the operation.",
+			2,
+			3,
+			new List<Affliction> (){ zombified }
+		); 
+
+		/*GOOD dialogue spoken by FRIEND during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+        
+        Dialogue antiDope = new Dialogue (
+             "That antidote is dope!",
+             2,
+             3,
+             new List<Affliction> (){ poison }
+         ); */
+
+		//BAD dialogue spoken by FRIEND during NONSPECIFIC treatment
+
+		Dialogue notSure = new Dialogue (
+			"Uh...are you sure that goes there?",
+			2,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
+
+		Dialogue makeWorse = new Dialogue (
+			"I think you're making it worse.",
+			2,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);        
+
+		Dialogue doRefunds = new Dialogue (
+			"Do you do refunds?",
+			2,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);  
+
+		Dialogue innRec = new Dialogue (
+			"I should've known better than to take doctor recommendations from that guy at the inn.",
+			2,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		); 
+
+		Dialogue badFeeling = new Dialogue (
+			"I've got a bad feeling about this.",
+			2,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);  
+
+		Dialogue useForce = new Dialogue (
+			"Maybe you should try using the Force.",
+			2,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		); 
+
+		Dialogue seeLicense = new Dialogue (
+			"Can I see your license again?",
+			2,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		); 
+
+		/*BAD dialogue spoken by FRIEND during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+        
+        Dialogue imSick = new Dialogue (
+             "Even I'M starting to feel sick while watching you work.",
+             2,
+             1,
+             new List<Affliction> (){ poison }
+         ); */
+
+		//BAD dialogue spoken by FRIEND during treatment for MISSING LIMB
+		Dialogue goodArm = new Dialogue (
+			"Be careful with that thing -- that's his good arm!",
+			2,
+			1,
+			new List<Affliction> (){ missingLimb }
+		); 
+		//BAD dialogue spoken by FRIEND during treatment for FROZEN
+		Dialogue worstSlushie = new Dialogue (
+			"Worst. Slushie. Ever.",
+			2,
+			1,
+			new List<Affliction> (){ frozen }
+		); 
+
+		//BAD dialogue spoken by FRIEND during treatment for POSSESSED
+		Dialogue newRoomie = new Dialogue (
+			"I guess I'm stuck with this demon, huh...think he'll pay rent?",
+			2,
+			1,
+			new List<Affliction> (){ possessed }
+		); 
+
+		//BAD dialogue spoken by FRIEND during treatment for PARASITE
+		Dialogue buggingBug = new Dialogue (
+			"That's doing literally nothing besides annoying it.",
+			2,
+			1,
+			new List<Affliction> (){ parasite }
+		); 
+
+		//BAD dialogue spoken by FRIEND during treatment for ZOMBIFIED
+		Dialogue unMatch = new Dialogue (
+			"He's undead. You're unqualified. It's a perfect match.",
+			2,
+			1,
+			new List<Affliction> (){ zombified }
+		); 
 
 
-		/*	//GOOD dialogue spoken by FRIEND during treatment for MISSING LIMB
-			Dialogue goodJob = new Dialogue{
-			text = "You did a much better job than I did with my IKEA furniture.";
-			goodness = 3;
-			spokenBy = 2;
-		}             
+		//GOOD dialogue spoken by PLAYER during NONSPECIFIC treatment
+		Dialogue goodTraining = new Dialogue (
+			"Looks like all my training paid off. All 234,000 GP of it.",
+			1,
+			3,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
 
-			Dialogue goodJob = new Dialogue{
-			text = "Looks like I'll have to throw out all my limericks. 'I once knew a one-armed man from Nantucket...'";
-			goodness = 3;
-			spokenBy = 2;
-		}          
+		Dialogue notNoob = new Dialogue (
+			"Don't worry, I've totally done this before.",
+			1,
+			3,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
 
-			Dialogue goodJob = new Dialogue{
-			text = "A good, firm handshake is so important for making the best first impression.";
-			goodness = 3;
-			spokenBy = 2;
-		}       
+		Dialogue blueShield = new Dialogue (
+			"It's dangerous to go alone. Take this Blue Shield Wellcare Plus plan...it's only 1,000 GP!",
+			1,
+			3,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
 
-			Dialogue goodJob = new Dialogue{
-			text = "Looks like he'll be up and arm-wrestling in no time. That's very important to him, you know.";
-			goodness = 3;
-			spokenBy = 2;
-		}       
+		Dialogue cashThanks = new Dialogue (
+			"I'll take my payment in cold hard cash, thanks.",
+			1,
+			3,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
 
-			Dialogue goodJob = new Dialogue{
-			text = "They make it look so hard on TV, but I guess it's just a 'tab A in slot B' kind of thing, huh?";
-			goodness = 3;
-			spokenBy = 2;
-		}       
+		Dialogue lookMa = new Dialogue (
+			"Look, Ma! No hands!",
+			1,
+			3,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
 
-			//GOOD dialogue spoken by FRIEND during treatment for FROZEN
-			Dialogue goodJob = new Dialogue{
-			text = "Getting warmer!";
-			goodness = 3;
-			spokenBy = 2;
-		}             
+		/*GOOD dialogue spoken by PLAYER during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+        
+        Dialogue awesomeSnake = new Dialogue (
+             "I'm so awesome, even snakes are afraid of me.",
+             1,
+             3,
+             new List<Affliction> (){ poison }
+         ); */
 
-			//GOOD dialogue spoken by FRIEND during treatment for POSSESSED
-			Dialogue goodJob = new Dialogue{
-			text = "Bye bye, Beezlebub!";
-			goodness = 3;
-			spokenBy = 2;
-		}   
+		//GOOD dialogue spoken by PLAYER during treatment for MISSING LIMB
 
-			//GOOD dialogue spoken by FRIEND during treatment for PARASITE
-			Dialogue goodJob = new Dialogue{
-			text = "One step closer to ending an unhealthy co-dependent relationship.";
-			goodness = 3;
-			spokenBy = 2;
-		}   
+		Dialogue easyPuzzle = new Dialogue (
+			"Easier than one of those 1,000-piece puzzles.",
+			1,
+			3,
+			new List<Affliction> (){ missingLimb }
+		);
 
-			//GOOD dialogue spoken by FRIEND during treatment for ZOMBIFIED
-			Dialogue goodJob = new Dialogue{
-			text = "Can't wait to get my friend back. He was really the brains of the operation.";
-			goodness = 3;
-			spokenBy = 2;
-		}   
+		Dialogue itsAlive = new Dialogue (
+			"It's alive! It's aliiiiiive!",
+			1,
+			3,
+			new List<Affliction> (){ missingLimb }
+		);
 
-			//BAD dialogue spoken by FRIEND during NONSPECIFIC treatment
-			Dialogue goodJob = new Dialogue{
-			text = "Uh...are you sure that goes there?";
-			goodness = 1;
-			spokenBy = 2;
-		} 
+		Dialogue haveTechnology = new Dialogue (
+			"We can rebuild him! We have the technology!",
+			1,
+			3,
+			new List<Affliction> (){ missingLimb }
+		);
 
-			Dialogue goodJob = new Dialogue{
-			text = "I think you're making it worse.";
-			goodness = 1;
-			spokenBy = 2;
-		} 
+		//GOOD dialogue spoken by PLAYER during treatment of FROZEN
+		Dialogue hotStreak = new Dialogue (
+			"I'm on a hot streak.",
+			1,
+			3,
+			new List<Affliction> (){ frozen }
+		);
 
-			Dialogue goodJob = new Dialogue{
-			text = "Do you do refunds?";
-			goodness = 1;
-			spokenBy = 2;
-		} 
+		//GOOD dialogue spoken by PLAYER during treatment of POSSESSED
+		Dialogue powerCompel = new Dialogue (
+			"The power of me compels you!",
+			1,
+			3,
+			new List<Affliction> (){ possessed }
+		);
 
-			Dialogue goodJob = new Dialogue{
-			text = "I should've known better than to take doctor recommendations from that guy at the inn.";
-			goodness = 1;
-			spokenBy = 2;
-		} 
+		Dialogue repoMan = new Dialogue (
+			"Just call me the Repo Man.",
+			1,
+			3,
+			new List<Affliction> (){ possessed }
+		);
 
-			Dialogue goodJob = new Dialogue{
-			text = "I've got a bad feeling about this.";
-			goodness = 1;
-			spokenBy = 2;
-		} 
+		//GOOD dialogue spoken by PLAYER during treatment of PARASITE
+		Dialogue pestControl = new Dialogue (
+			"Just call me pest control.",
+			1,
+			3,
+			new List<Affliction> (){ parasite }
+		);
 
-			Dialogue goodJob = new Dialogue{
-			text = "Maybe you should try using the Force.";
-			goodness = 1;
-			spokenBy = 2;
-		} 
+		//GOOD dialogue spoken by PLAYER during treatment of ZOMBIFIED       
+		Dialogue geniusBrain = new Dialogue (
+			"I'm a genius! It must be because of my enormous, undigested brain.",
+			1,
+			3,
+			new List<Affliction> (){ zombified }
+		);
 
-			Dialogue goodJob = new Dialogue{
-			text = "Can I see your license again?";
-			goodness = 1;
-			spokenBy = 2;
-		}
+		//BAD dialogue spoken by PLAYER during NONSPECIFIC treatment
+		Dialogue stillPaid = new Dialogue (
+			"(I hope I still get paid.)",
+			1,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
 
-			//BAD dialogue spoken by FRIEND during treatment for MISSING LIMB 
-			Dialogue goodJob = new Dialogue{
-			text = "Be careful with that thing -- that's his good arm!";
-			goodness = 1;
-			spokenBy = 2;
-		} 
+		Dialogue waitLevel = new Dialogue (
+			"(Maybe I should have waited until I leveled up.)",
+			1,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
+
+		Dialogue stoveOn = new Dialogue (
+			"(I wonder if I left the stove on? Wait, what was I doing again?)",
+			1,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
+
+		Dialogue clericalError = new Dialogue (
+			"Sorry, I made a clerical error.",
+			1,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
+
+		Dialogue suchDebt = new Dialogue (
+			"(I have so much crushing debt.)",
+			1,
+			1,
+			new List<Affliction> (){ possessed, frozen, parasite, missingLimb, zombified }
+		);
+
+		/*BAD dialogue spoken by PLAYER during treatment for POISON (need to add POISON to list of nonspecific treatment dialogue)
+        
+        Dialogue oopsAspirin = new Dialogue (
+             "Wait, I think this was just aspirin.",
+             1,
+             1,
+             new List<Affliction> (){ poison }
+         ); */
+
+		//BAD dialogue spoken by PLAYER during treatment for MISSING LIMB
+
+		Dialogue noNeed = new Dialogue (
+			"Well...they didn’t need that anyway.",
+			1,
+			1,
+			new List<Affliction> (){ missingLimb }
+		);
+
+		Dialogue whyLeftover = new Dialogue (
+			"Wait, why's there this leftover piece?",
+			1,
+			1,
+			new List<Affliction> (){ missingLimb }
+		);
+
+		Dialogue lostFound = new Dialogue (
+			"I guess I'll send this to the Lost and Found.",
+			1,
+			1,
+			new List<Affliction> (){ missingLimb }
+		);
+
+		//BAD dialogue spoken by PLAYER during treatment for FROZEN            
+		Dialogue letGo = new Dialogue (
+			"Let's just...let it go.",
+			1,
+			1,
+			new List<Affliction> (){ frozen }
+		);   
+
+		//BAD dialogue spoken by PLAYER during treatment for POSSESSED            
+		Dialogue goodPersonality = new Dialogue (
+			"I mean, maybe the demon has a good personality?",
+			1,
+			1,
+			new List<Affliction> (){ possessed }
+		);    
+
+		//BAD dialogue spoken by PLAYER during treatment for PARASITE            
+		Dialogue whereRipley = new Dialogue (
+			"Where's Ripley when you need her?",
+			1,
+			1,
+			new List<Affliction> (){ parasite }
+		);                             
+
+		//BAD dialogue spoken by PLAYER during treatment for ZOMBIFIED            
+		Dialogue headshotTime = new Dialogue (
+			"Maybe it's time for my secret ingredient: a headshot.",
+			1,
+			1,
+			new List<Affliction> (){ zombified }
+		);    
+
+		//INITIAL DIALOGUE BELOW
+		//UNSYMPATHETIC starting dialogue for MISSING LIMB
+		StartingDialogue testTest = new StartingDialogue (
+			                            "OMG, we ran into this totally rad dragon. Well, it was rad until it took a bite out of my friend. Oh, it ate some villagers too but who cares?",
+			                            1,
+			                            new List<Affliction> (){ missingLimb }
+		                            );
 
 
-			//BAD dialogue spoken by FRIEND during treatment for FROZEN
-			Dialogue goodJob = new Dialogue{
-			text = "Worst. Slushie. Ever.";
-			goodness = 1;
-			spokenBy = 2;
-		} 
-
-			//BAD dialogue spoken by FRIEND during treatment for POSSESSED
-			Dialogue goodJob = new Dialogue{
-			text = "I guess I'm stuck with this demon, huh...think he'll pay rent?";
-			goodness = 1;
-			spokenBy = 2;
-		} 
-
-			//BAD dialogue spoken by FRIEND during treatment for PARASITE
-			Dialogue goodJob = new Dialogue{
-			text = "That's doing literally nothing besides annoying it.";
-			goodness = 1;
-			spokenBy = 2;
-		} 
-
-			//BAD dialogue spoken by FRIEND during treatment for ZOMBIFIED
-			Dialogue goodJob = new Dialogue{
-			text = "He's undead. You're unqualified. It's a perfect match.";
-			goodness = 1;
-			spokenBy = 2;
-		} 
-
-			//GOOD dialogue spoken by PLAYER during NONSPECIFIC treatment
-			Dialogue goodJob = new Dialogue{
-			text = "Looks like all my training paid off. All 234,000 GP of it.";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			Dialogue goodJob = new Dialogue{
-			text = "Don't worry, I've totally done this before.";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			Dialogue goodJob = new Dialogue{
-			text = "It's dangerous to go alone. Take this Blue Shield Wellcare Plus plan...it's only 1,000 GP!";
-			goodness = 3;
-			spokenBy = 1;
-		}         
-
-			Dialogue goodJob = new Dialogue{
-			text = "I'll take my payment in cold hard cash, thanks.";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			Dialogue goodJob = new Dialogue{
-			text = "Look, Ma! No hands!";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			//GOOD dialogue spoken by PLAYER during treatment for MISSING LIMB
-			Dialogue goodJob = new Dialogue{
-			text = "Easier than one of those 1,000-piece puzzles.";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			Dialogue goodJob = new Dialogue{
-			text = "It's alive! It's aliiiiiive!";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			Dialogue goodJob = new Dialogue{
-			text = "We can rebuild him! We have the technology!";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			//GOOD dialogue spoken by PLAYER during treatment for FROZEN
-			Dialogue goodJob = new Dialogue{
-			text = "I'm on a hot streak.";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			//GOOD dialogue spoken by PLAYER during treatment for POSSESSED
-			Dialogue goodJob = new Dialogue{
-			text = "The power of me compels you!";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			Dialogue goodJob = new Dialogue{
-			text = "Just call me the Repo Man.";
-			goodness = 3;
-			spokenBy = 1;
-		}
-
-			//GOOD dialogue spoken by PLAYER during treatment for PARASITE
-			Dialogue goodJob = new Dialogue{
-			text = "Just call me pest control.";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			//GOOD dialogue spoken by PLAYER during treatment for ZOMBIFIED
-			Dialogue goodJob = new Dialogue{
-			text = "I'm a genius! It must be because of my enormous, undigested brain.";
-			goodness = 3;
-			spokenBy = 1;
-		} 
-
-			//BAD dialogue spoken by PLAYER during NONSPECIFIC treatment
-			Dialogue goodJob = new Dialogue{
-			text = "(I hope I still get paid.)";
-			goodness = 1;
-			spokenBy = 1;
-		} 
-
-			Dialogue goodJob = new Dialogue{
-			text = "(Maybe I should have waited until I leveled up.)";
-			goodness = 1;
-			spokenBy = 1;
-		}   
-
-			Dialogue goodJob = new Dialogue{
-			text = "(I wonder if I left the stove on? Wait, what was I doing again?)";
-			goodness = 1;
-			spokenBy = 1;
-		}   
-
-			Dialogue goodJob = new Dialogue{
-			text = "Sorry, I made a clerical error.";
-			goodness = 1;
-			spokenBy = 1;
-		}   
-
-			Dialogue goodJob = new Dialogue{
-			text = "(I have so much crushing debt.)";
-			goodness = 1;
-			spokenBy = 1;
-		}          
-
-			//BAD dialogue spoken by PLAYER during treatment for MISSING LIMB
-			Dialogue goodJob = new Dialogue{
-			text = "Well...they didn’t need that anyway.";
-			goodness = 1;
-			spokenBy = 1;
-		}         
-
-			Dialogue goodJob = new Dialogue{
-			text = "Wait, why's there this leftover piece?";
-			goodness = 1;
-			spokenBy = 1;
-		}     
-
-			Dialogue goodJob = new Dialogue{
-			text = "I guess I'll send this to the Lost and Found.";
-			goodness = 1;
-			spokenBy = 1;
-		}  
-
-			//BAD dialogue spoken by PLAYER during treatment for FROZEN
-			Dialogue goodJob = new Dialogue{
-			text = "Let's just...let it go.";
-			goodness = 1;
-			spokenBy = 1;
-		}  
-
-			//BAD dialogue spoken by PLAYER during treatment for POSSESSED
-			Dialogue goodJob = new Dialogue{
-			text = "I mean, maybe the demon has a good personality?";
-			goodness = 1;
-			spokenBy = 1;
-		}  
-
-			//BAD dialogue spoken by PLAYER during treatment for PARASITE
-			Dialogue goodJob = new Dialogue{
-			text = "Where's Ripley when you need her?";
-			goodness = 1;
-			spokenBy = 1;
-		}  
-
-			//BAD dialogue spoken by PLAYER during treatment for ZOMBIFIED
-			Dialogue goodJob = new Dialogue{
-			text = "Maybe it's time for my secret ingredient: a headshot.";
-			goodness = 1;
-			spokenBy = 1;
-		} */
 	}
 }
