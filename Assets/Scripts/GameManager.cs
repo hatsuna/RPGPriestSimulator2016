@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour {
 
 			//ugly hardcoded nastiness
 			switch(affliction.name){
-			case("Missing Limb"):
+			case("Poison"):
 				afflictionState += 10;
 				break;
 			case("Frozen"):
@@ -170,7 +170,21 @@ public class GameManager : MonoBehaviour {
 
 				//Advance Treatment State
 				trigger.GetComponent<Victim>().treatmentState += 1;
-				CheckVisualChanges (trigger.GetComponent<Victim> ().treatmentState, affliction);
+				//under the assumption that the affliction has been cured,
+				//these afflictionStates will remove the child-ed affliction effect
+				switch(afflictionState){
+				case (11):
+				case (21):
+				case (32):
+				case (42):
+				case (52):
+				
+					trigger.transform.GetChild(1).gameObject.SetActive(false);
+					break;
+				default:
+					break;
+				}
+					
 
 				//check endstate
 				if(trigger.GetComponent<Victim>().treatmentState ==
@@ -211,12 +225,9 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	void CheckVisualChanges(int treatmentState, DataStructures.Affliction affliction){
-	}
-
 	public DataStructures.Affliction GenerateAfflictions () {
 		List<DataStructures.Affliction> possibleAfflictions = DataStructures.possibleAfflictions;
-		int afflictionIndex = Random.Range (0, possibleAfflictions.Count - 1);
+		int afflictionIndex = Random.Range (0, possibleAfflictions.Count);
 		Debug.Log ("My affliction index is: " + afflictionIndex);
 		return possibleAfflictions [afflictionIndex];
 	} 
