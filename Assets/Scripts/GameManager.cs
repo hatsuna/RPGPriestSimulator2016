@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour {
 
 	public int timeRemaining = 120;
 
+	public GameObject bloodParticles;
+	GameObject bloodSpray;
+
 	// Use this for initialization
 	void Start () {
 		//SpawnVictim();
@@ -51,6 +54,9 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 		}*/
+
+		bloodSpray = (GameObject)(Instantiate(bloodParticles, victimLocation.transform.position, victimLocation.transform.rotation));
+		bloodSpray.SetActive(false);
 			
 	}
 
@@ -156,6 +162,8 @@ public class GameManager : MonoBehaviour {
 				newSpell.SetActive (true);
 				spellsToClean.Add (newSpell);
 
+				bloodSpray.SetActive(false);
+
 				// Give Audio Feedback
 				//audioGood.time = 0.6f;
 				audioGood.Play ();
@@ -223,6 +231,7 @@ public class GameManager : MonoBehaviour {
 					leftTextUI.text = speech.text;
 					dialogueManager.UpdateDialogueLeft ();
 				}
+				bloodSpray.SetActive(true);
 
 				// Play Error Sound
 				audioBad.Play();
