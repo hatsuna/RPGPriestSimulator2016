@@ -168,6 +168,11 @@ public class GameManager : MonoBehaviour {
 				//removed used tools
 				collider.SetActive(false);
 
+				// Check for Visual Changes
+				if (collider.transform.parent.GetComponent<Victim> ().affliction.name == "Parasite") {
+					//delete parasite
+				}
+
 			}else {
 				Debug.Log("these don't match");
 				//Get Dialogue

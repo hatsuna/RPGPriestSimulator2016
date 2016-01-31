@@ -8,6 +8,8 @@ public class Victim : MonoBehaviour {
 	public int treatmentState;
 	public Sprite testSprite;
 
+	public GameObject parasitePrefab;
+
 
 	// Use this for initialization
 	void Start () {
@@ -40,6 +42,7 @@ public class Victim : MonoBehaviour {
 			gameObject.GetComponent<Renderer>().material.color = Color.magenta;
 		} else if (affliction.name == "Parasite") {
 			gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+			GameObject newParasite = (GameObject)(Instantiate (parasitePrefab, new Vector3(gameObject.transform.position.x + 0.68f, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation));
 		} else if (affliction.name == "Zombified") {
 			gameObject.GetComponent<Renderer>().material.color = Color.green;
 		} else {
