@@ -34,15 +34,18 @@ public class Victim : MonoBehaviour {
 		this.affliction = affliction;
 
 		if (affliction.name == "Frozen") {
-			gameObject.GetComponent<Renderer>().material.color = Color.blue;
+			gameObject.GetComponent<Renderer> ().material.color = Color.blue;
 		} else if (affliction.name == "Possessed") {
-			gameObject.GetComponent<Renderer>().material.color = Color.magenta;
+			gameObject.GetComponent<Renderer> ().material.color = Color.magenta;
 		} else if (affliction.name == "Parasite") {
-			gameObject.GetComponent<Renderer>().material.color = Color.yellow;
-			GameObject newParasite = (GameObject)(Instantiate (parasitePrefab, new Vector3(gameObject.transform.position.x + 0.68f, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation));
+			gameObject.GetComponent<Renderer> ().material.color = Color.yellow;
+			GameObject newParasite = (GameObject)(Instantiate (parasitePrefab, new Vector3 (gameObject.transform.position.x + 0.68f, gameObject.transform.position.y, gameObject.transform.position.z), gameObject.transform.rotation));
 		} else if (affliction.name == "Zombified") {
-			gameObject.GetComponent<Renderer>().material.color = Color.green;
+			gameObject.GetComponent<Renderer> ().material.color = Color.grey;
+		} else if (affliction.name == "Poison") {
+			gameObject.GetComponent<Renderer> ().material.color = Color.green;
 		} else {
+			gameObject.GetComponent<Renderer> ().material.color = Color.red;
 		}
 	}
 }

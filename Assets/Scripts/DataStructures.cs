@@ -598,18 +598,6 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ zombified }
 		);    
 
-		StartingDialogue radDragon = new StartingDialogue (
-			"OMG, we ran into this totally rad dragon. Well, it was rad until it took a bite out of my friend. Oh, it ate some villagers too but who cares?",
-			1,
-			new List<Affliction> (){ missingLimb }
-		);
-
-		StartingDialogue noWrestle = new StartingDialogue (
-			"This is a disaster. He’s never lost at arm-wrestling before!",
-			1,
-			new List<Affliction> (){ missingLimb }
-		);
-
 		//UNSYMPATHETIC starting dialogue for FROZEN
 		StartingDialogue meanSquirtle = new StartingDialogue (
 			"I told him he shouldn’t tease Squirtles in the dead of winter, but no one ever listens to me.",
@@ -644,21 +632,14 @@ public class DataStructures : MonoBehaviour {
 			new List<Affliction> (){ zombified }
 		);
 
-		/*      //SYMPATHETIC starting dialogue for POISON
+		//SYMPATHETIC starting dialogue for POISON
 
 		StartingDialogue lifeSaver = new StartingDialogue (
 			"Someone was trying to kill me! He saved my life!",
 			3,
 			new List<Affliction> (){ poison }
 		);
-		*/
 
-		//SYMPATHETIC starting dialogue for MISSING LIMB
-		StartingDialogue orphanSaver = new StartingDialogue (
-			"He was saving orphans from raiders! Also cats!",
-			3,
-			new List<Affliction> (){ missingLimb }
-		);
 
 		//SYMPATHETIC starting dialogue for FROZEN
 		StartingDialogue hugeShip = new StartingDialogue (
